@@ -1,0 +1,31 @@
+{
+  "name": "qwebs-starter-kit-react-native",
+  "version": "0.0.1",
+  "description": "Starter kit to create a Qwebs server with Polymer as front-end",
+  "main": "server.js",
+  "dependencies": {
+    "qwebs": "latest"
+  },
+  "devDependencies": {
+    "coveralls": "latest",
+    "gulp": "latest",
+    "gulp-concat": "^2.6.1",
+    "gulp-crisper": "latest",
+    "gulp-json-editor": "latest",
+    "gulp-minify-inline": "^0.2.1",
+    "gulp-rename": "^1.2.2",
+    "gulp-vulcanize": "latest",
+    "istanbul": "latest",
+    "jasmine-node": "latest",
+    "protractor": "latest"
+  },
+  "scripts": {
+    "test": "node node_modules/jasmine-node/bin/jasmine-node tests/server",
+    "test-cover": "./node_modules/.bin/istanbul cover node_modules/jasmine-node/bin/jasmine-node --captureExceptions tests && cat coverage/lcov.info | node_modules/coveralls/bin/coveralls.js && rm -rf coverage",
+    "start": "node server.js"
+  },
+  "author": {
+    "name": "Benoît Claveau",
+    "email": "benoit.claveau@gmail.com"
+  }
+}
