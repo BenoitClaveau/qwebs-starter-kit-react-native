@@ -6,6 +6,8 @@ Starter kit to create a [https://github.com/facebook/react-native](React Native 
 
 ## Installation
 
+[https://facebook.github.io/react-native/docs/getting-started.html](https://facebook.github.io/react-native/docs/getting-started.html)
+
 ```shell
 git clone https://github.com/BenoitClaveau/qwebs-starter-kit-react-native.git
 cd qwebs-starter-kit-react-native.git
