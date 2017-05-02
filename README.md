@@ -2,8 +2,6 @@
 
 ## installation
 
-'''shell
-npm install -g react-native-cli
+> npm install -g react-native-cli
 
-react-native init App
-'''
+> react-native init App
