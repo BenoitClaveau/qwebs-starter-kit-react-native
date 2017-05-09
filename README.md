@@ -14,36 +14,38 @@ cd qwebs-starter-kit-react-native.git
 npm install
 ```
 
-## Start
-
-Run server on http://localhost:3000
+## Run API server on http://localhost:3000
 
 ```shell
 node server.js
 ```
 
-Run app
+## Run an Android app
+
+### Start a virtual device
+
+Start Android Studio.
+Go to Tools > Android > AVD Manager.
+Start or create a virtual device like Nexus 5.
+Close Android Studio.
+
+### Start the app
+
+```shell
+cd App
+react-native run-android
+```
+
+## Run an IOS app
+
+### start the app
 
 ```shell
 cd App
 react-native run-ios
-react-native run-android
 ```
 
-## Tests
 
-Run server tests
-
-```shell
-npm test
-```
-
-## Build polymer
-
-```shell
-npm install gulp -g
-gulp prod
-```
 
 [npm-image]: https://img.shields.io/npm/v/qwebs-starter-kit-react-native.svg
 [npm-url]: https://npmjs.org/package/qwebs-starter-kit-react-native
