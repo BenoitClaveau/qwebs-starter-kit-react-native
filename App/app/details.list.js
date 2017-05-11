@@ -27,25 +27,50 @@ export default class DetailsList extends React.Component {
       super();
       const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
       this.state = { 
-          dataSource: ds.cloneWithRows(['row 1', 'row 2']), 
+          dataSource: ds.cloneWithRows([]),
+          loaded: false 
     };
   }
 
-  renderRow(props) {
+  componentDidMount() { 
+    this.fetchData(); 
+  }
+
+  fetchData() { 
+    return fetch('http://localhost:3000/users')
+      .then((response) => response.json())
+      .then((responseData) => { 
+        this.setState({ 
+          dataSource: ds.cloneWithRows(responseData),
+          loaded: true
+        }); 
+      }) 
+      .done();
+  }
+
+  renderRow(props, sectionId, rowId) {
     return (
       <View style={styles.row}>
-        <Text style={styles.text}>{`item: ${props}`}</Text>
+        <Text style={styles.text}>{`item: ${props.login}`}</Text>
       </View>
     );
   }
 
   render() {
-    return (
-      <ListView
-        style={styles.container}
-        dataSource={this.state.dataSource} 
-        renderRow={this.renderRow} 
-      />
-    );
+    if (!this.state.loaded)
+      return (
+        <View style={styles.container}>
+          <Text>Loading users...</Text>
+        </View>
+      );
+
+    else 
+      return (
+        <ListView
+          style={styles.container}
+          dataSource={this.state.dataSource} 
+          renderRow={this.renderRow} 
+        />
+      );
   }
 }

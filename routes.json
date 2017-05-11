@@ -1,9 +1,10 @@
 {
     "services": [
-        { "name": "$route", "location": "./services/route" }
+        { "name": "$http", "location": "qwebs-http" },
+        { "name": "$user", "location": "./services/user" }
     ],
     "locators": [
-        { "get": "/", "service": "$route", "method": "index" },
-        { "get": "/*", "service": "$route", "method": "index" }
+        { "get": "/user/:id", "service": "$user", "method": "getById" },
+        { "get": "/users", "service": "$user", "method": "list" }
     ]
 }
