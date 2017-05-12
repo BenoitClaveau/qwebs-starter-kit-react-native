@@ -2,7 +2,7 @@
 
  [![NPM][npm-image]][npm-url]
  
-Starter kit to create a [https://github.com/facebook/react-native](React Native Application) and [https://www.npmjs.com/package/qwebs](Qwebs) as server.
+Starter kit to create a [React Native Application](https://github.com/facebook/react-native) and [Qwebs](https://www.npmjs.com/package/qwebs) as server.
 
 ## Installation
 
@@ -86,10 +86,10 @@ react-native run-ios
 * C:\Android\sdk\emulator (for emulator)
 * C:\Android\sdk\tools\bin (for advmanager)
 
-2- Install [https://code.visualstudio.com/](Visual Source Code) and the [https://github.com/Microsoft/vscode-react-native](React Native Tools extension).
+2- Install [Visual Source Code](https://code.visualstudio.com) and the [React Native Tools extension](https://github.com/Microsoft/vscode-react-native).
 3- cd App.
 4- Open a new Visual Source Code.
-5- Create a [https://github.com/Microsoft/vscode-react-native](.babelrc)
+5- Create a [.babelrc file](https://github.com/Microsoft/vscode-react-native)
 6- Setup a React Native: Debug Android
 7- Open http://localhost:8081/ to load react packager
 7- Start debugger or press F5
