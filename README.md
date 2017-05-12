@@ -26,10 +26,11 @@ node server.js
 
 #### Using Android Studio
 
-Start Android Studio.
-Go to Tools > Android > AVD Manager.
-Start or create a virtual device like Nexus 5.
-Close Android Studio.
+1. Start Android Studio.
+2. Go to Tools > Android > AVD Manager.
+3. Create a virtual device like Nexus 5.
+4. Start the virtual device.
+5. Close Android Studio.
 
 #### Using command line
 
@@ -81,18 +82,17 @@ react-native run-ios
 
 #### Windows
 
-1- Add the PATH environment variable:
-* C:\Android\sdk\platform-tools (for adb)
-* C:\Android\sdk\emulator (for emulator)
-* C:\Android\sdk\tools\bin (for advmanager)
-
-2- Install [Visual Source Code](https://code.visualstudio.com) and the [React Native Tools extension](https://github.com/Microsoft/vscode-react-native).
-3- cd App.
-4- Open a new Visual Source Code.
-5- Create a [.babelrc file](https://github.com/Microsoft/vscode-react-native)
-6- Setup a React Native: Debug Android
-7- Open http://localhost:8081/ to load react packager
-7- Start debugger or press F5
+1. Add the PATH environment variable:
+..* C:\Android\sdk\platform-tools (for adb)
+..* C:\Android\sdk\emulator (for emulator)
+..* C:\Android\sdk\tools\bin (for advmanager)
+2. Install [Visual Source Code](https://code.visualstudio.com) and the [React Native Tools extension](https://github.com/Microsoft/vscode-react-native).
+3. cd App.
+4. Open a new Visual Source Code.
+5. Create a [.babelrc file](https://github.com/Microsoft/vscode-react-native)
+6. Setup a React Native: Debug Android
+7. Open http://localhost:8081/ to load react packager
+8. Start debugger or press F5
 
 or
 
