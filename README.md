@@ -83,9 +83,9 @@ react-native run-ios
 #### Windows
 
 1. Add the PATH environment variable:
-  * C:\Android\sdk\platform-tools (for adb)
-  * C:\Android\sdk\emulator (for emulator)
-  * C:\Android\sdk\tools\bin (for advmanager)
+> C:\Android\sdk\platform-tools (for adb)
+> C:\Android\sdk\emulator (for emulator)
+> C:\Android\sdk\tools\bin (for advmanager)
 2. Install [Visual Source Code](https://code.visualstudio.com) and the [React Native Tools extension](https://github.com/Microsoft/vscode-react-native).
 3. cd App.
 4. Open a new Visual Source Code.
