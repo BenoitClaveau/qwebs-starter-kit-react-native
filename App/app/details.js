@@ -1,27 +1,29 @@
 import React from 'react';
 import { 
+  StyleSheet,
   View,
   Text,
-  Image
 } from 'react-native';
 import DetailsList from './details.list.js';
+
+const styles = StyleSheet.create({
+  header: {
+    padding: 8,
+    alignSelf: 'center',
+    fontSize: 16
+  }
+});
 
 export default class Details extends React.Component {
   static navigationOptions = {
     title: 'Details',
   };
   render() {
+    const {navigation} = this.props;
     return (
       <View>
-        <Image 
-          style={{
-            alignSelf: 'center',
-            height: 140,
-            width: 320,
-          }}
-          source={{uri: 'http://www.izzili.com/wp-content/uploads/2016/12/Izzili_logo_transparent_dark_font.png'}}
-        /> 
-        <DetailsList></DetailsList>
+        <Text style={styles.header}>Details</Text>
+        <DetailsList navigation={navigation}></DetailsList>
       </View>
     );
   }

@@ -3,7 +3,8 @@ import {
   ListView,
   View,
   StyleSheet,
-  Text
+  Text,
+  TouchableOpacity
 } from 'react-native';
 
 const styles = StyleSheet.create({
@@ -13,22 +14,27 @@ const styles = StyleSheet.create({
     backgroundColor: "#FFFFFF"
   },
   row: {
-    marginTop: 16,
-    marginBottom: 16
+    flex: 1,
+    margin: 8,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   text: {
-    fontSize: 22
+    fontSize: 16
+  },
+  error: {
+    color: "#FF0000"
   }
 });
 
-//http://stackoverflow.com/questions/34263861/listview-datasource-looping-data-for-react-native
 export default class DetailsList extends React.Component {
   constructor() {
       super();
-      const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
+      this.ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
       this.state = { 
-          dataSource: ds.cloneWithRows([]),
-          loaded: false 
+          dataSource: this.ds.cloneWithRows([]),
+          loaded: false,
+          error: null
     };
   }
 
@@ -37,30 +43,61 @@ export default class DetailsList extends React.Component {
   }
 
   fetchData() { 
-    return fetch('http://localhost:3000/users')
+    return fetch('http://10.0.0.23:3000/users')
       .then((response) => response.json())
       .then((responseData) => { 
         this.setState({ 
-          dataSource: ds.cloneWithRows(responseData),
-          loaded: true
+          dataSource: this.ds.cloneWithRows(responseData),
+          loaded: true,
+          error: null
         }); 
-      }) 
+      })
+      .catch(error => {
+        this.setState({ 
+          loaded: true,
+          error: error.message
+        }); 
+      })
       .done();
   }
 
-  renderRow(props, sectionId, rowId) {
+  renderRow(rowData, sectionID, rowID, highlightRow) {
     return (
-      <View style={styles.row}>
-        <Text style={styles.text}>{`item: ${props.login}`}</Text>
-      </View>
+      <TouchableOpacity 
+        style={styles.row} 
+        onPress={(ev) => { 
+          this.pressRow(ev, rowData);
+          highlightRow(sectionID, rowID);
+        }}>
+        <Text style={styles.text}>{`item: ${rowData.login}`}</Text>
+      </TouchableOpacity>
     );
   }
+
+  /*renderSeparator(sectionID, rowID, adjacentRowHighlighted) {
+    return (
+      <View
+        key={`${sectionID}-${rowID}`}
+        style={{
+          height: 2,
+          backgroundColor: adjacentRowHighlighted ? '#3B5998' : '#CCCCCC',
+        }}
+      />
+    );
+  }*/
 
   render() {
     if (!this.state.loaded)
       return (
         <View style={styles.container}>
-          <Text>Loading users...</Text>
+          <Text style={styles.text}>Loading users...</Text>
+        </View>
+      );
+
+    else if (this.state.error)
+      return (
+        <View style={styles.container}>
+          <Text style={[styles.text, styles.error]}>{this.state.error}</Text>
         </View>
       );
 
@@ -69,8 +106,12 @@ export default class DetailsList extends React.Component {
         <ListView
           style={styles.container}
           dataSource={this.state.dataSource} 
-          renderRow={this.renderRow} 
+          renderRow={this.renderRow.bind(this)}
         />
       );
+  }
+
+  pressRow(ev, rowData) {
+    this.props.navigation.navigate('Detail', { user: rowData })
   }
 }

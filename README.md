@@ -4,9 +4,23 @@
  
 Starter kit to create a [React Native Application](https://github.com/facebook/react-native) and [Qwebs](https://www.npmjs.com/package/qwebs) as server.
 
-## Installation
+## React Native installation
 
 [https://facebook.github.io/react-native/docs/getting-started.html](https://facebook.github.io/react-native/docs/getting-started.html)
+
+1. NodeJS
+2. Python 2
+3. JDK 8
+
+Add path of npm module (C:\Users\your user name\AppData\Roaming\npm) to user system variables.
+
+```shell
+npm install -g react-native-cli
+```
+
+Install Android Studio
+
+## Starter kit installation
 
 ```shell
 git clone https://github.com/BenoitClaveau/qwebs-starter-kit-react-native.git
@@ -102,6 +116,13 @@ or
 
 After the emulator is running and the app on it, press the Menu button and then select "Debug JS Remotely" or "Debug in Chrome" (It depends the emulator using). You can see the next image as reference: emulator with steps image
 A new Chrome Tab will appears. You must press Ctrl + ⇧J to show the Developer tools and start tracking the debug steps. See this image as reference
+
+## Tools
+
+### Modeling
+
+* http://sequencediagram.org/
+* https://www.modelio.org
 
 [npm-image]: https://img.shields.io/npm/v/qwebs-starter-kit-react-native.svg
 [npm-url]: https://npmjs.org/package/qwebs-starter-kit-react-native

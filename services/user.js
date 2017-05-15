@@ -5,11 +5,13 @@
  */
 "use strict";
 
+const Readable = require("stream").Readable;
+
 class UserRoute {
     constructor() {
         this.users = [];
-        for(let i = 1; i <= 50; i++) {
-            this.users.push({ login: `user${i}@exemple.com` });
+        for(let i = 0; i < 50; i++) {
+            this.users.push({ login: `user${i+1}@exemple.com` });
         }
     };
     
@@ -18,10 +20,10 @@ class UserRoute {
 		stream._read = () => {};                     
 		
         setTimeout(() => {
-            for(let i = 1; i <= 50; i++) {
-                stream.push(this.users[1])
+            for(let i = 0; i < 50; i++) {
+                stream.push(this.users[i])
             }
-            stream.push(null);
+            stream.emit("end"); //equals as stream.push(null);    
         }, 100);
         
         return response.send({ request: request, stream: stream });
