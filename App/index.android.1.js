@@ -1,38 +1,13 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- * @flow
- */
-
-import React, { Component } from 'react';
+'use strict';
+import React from 'react';
 import {
   AppRegistry,
+  DrawerLayoutAndroid,
   StyleSheet,
   Text,
   View,
-  Image,
-  ScrollView
+  ToolbarAndroid,
 } from 'react-native';
-
-export default class App extends Component {
-  render() {
-    return (
-      <View style={styles.container}>
-        <Image source={{uri: 'https://i.chzbgr.com/full/7345954048/h7E2C65F9'}} style={{width: 360, height: 203}}/> 
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit index.android.js
-        </Text>
-        <Text style={styles.instructions}>
-          Double tap R on your keyboard to reload,{'\n'}
-          Shake or press menu button for dev menu
-        </Text>
-      </View>
-    );
-  }
-}
 
 const styles = StyleSheet.create({
   container: {
@@ -51,6 +26,45 @@ const styles = StyleSheet.create({
     color: '#333333',
     marginBottom: 5,
   },
+  toolbar: {
+    backgroundColor: '#00a2ed',
+    height: 56,
+  },
 });
 
-AppRegistry.registerComponent('App', () => App);
+export default class Home extends React.Component {
+
+  render() {
+    const navigationView = (
+      <View style={{flex: 1, backgroundColor: '#88D8EC'}}>
+        <Text style={{margin: 10, fontSize: 15, textAlign: 'left'}}>Drawer Item</Text>
+      </View>
+    );
+
+    return (
+      <DrawerLayoutAndroid
+        drawerWidth={300}
+        drawerPosition={DrawerLayoutAndroid.positions.Left}
+        renderNavigationView={() => navigationView}>
+        <View style={styles.container}>
+        <ToolbarAndroid
+          navIcon={require('image!hamburger')}
+          title="OpenLight"
+          titleColor="black"
+          style={styles.toolbar}
+          onIconClicked={() => this.refs[DRAWER_REF].openDrawer()} />
+          <Text style={styles.welcome}>
+            Example Text
+          </Text>
+          <Text style={styles.instructions}>
+            To get started, edit index.android.js
+          </Text>
+          <Text style={styles.instructions}>
+            Shake or press menu button for dev menu
+          </Text>
+        </View>
+      </DrawerLayoutAndroid>
+    );
+  }
+}
+
