@@ -1,5 +1,0 @@
-{
-    "compress": false,
-    "verbose": false,
-    "routes": "./routes.json"
-}

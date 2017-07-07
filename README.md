@@ -1,8 +1,6 @@
-# qwebs-starter-kit-react-native
+# ada-app-react-native
 
- [![NPM][npm-image]][npm-url]
- 
-Starter kit to create a [React Native Application](https://github.com/facebook/react-native) and [Qwebs](https://www.npmjs.com/package/qwebs) as server.
+ADA app on your mobile phone
 
 ## React Native installation
 
@@ -20,19 +18,7 @@ npm install -g react-native-cli
 
 Install Android Studio
 
-## Starter kit installation
-
-```shell
-git clone https://github.com/BenoitClaveau/qwebs-starter-kit-react-native.git
-cd qwebs-starter-kit-react-native.git
-npm install
-```
-
-## Run API server on http://localhost:3000
-
-```shell
-node server.js
-```
+Add ANDROID_HOME C:\Users\BenoitClaveau\AppData\Local\Android\sdk to user system variables.
 
 ## Run an Android app
 
@@ -85,7 +71,7 @@ react-native run-android
 
 ## Run an IOS app
 
-### start the app
+### Start the app
 
 ```shell
 cd App
@@ -99,9 +85,7 @@ react-native run-ios
 1. Add the PATH environment variable:
 
 > C:\Android\sdk\platform-tools (for adb)
-
 > C:\Android\sdk\emulator (for emulator)
-
 > C:\Android\sdk\tools\bin (for advmanager)
 
 2. Install [Visual Source Code](https://code.visualstudio.com) and the [React Native Tools extension](https://github.com/Microsoft/vscode-react-native).
@@ -117,12 +101,30 @@ or
 After the emulator is running and the app on it, press the Menu button and then select "Debug JS Remotely" or "Debug in Chrome" (It depends the emulator using). You can see the next image as reference: emulator with steps image
 A new Chrome Tab will appears. You must press Ctrl + ⇧J to show the Developer tools and start tracking the debug steps. See this image as reference
 
-## Tools
+## Components
 
-### Modeling
+### Navigation
 
-* http://sequencediagram.org/
-* https://www.modelio.org
+[https://reactnavigation.org/docs/intro/](https://reactnavigation.org/docs/intro/)
 
-[npm-image]: https://img.shields.io/npm/v/qwebs-starter-kit-react-native.svg
-[npm-url]: https://npmjs.org/package/qwebs-starter-kit-react-native
+Open a CMD console as Administrator
+```shell
+cd App
+npm install react-navigation --save
+```
+
+### Icons
+
+Open a CMD console as Administrator
+```shell
+cd App
+npm install react-native-vector-icons --save
+```
+
+And follow instructions for Gradle
+
+https://github.com/oblador/react-native-vector-icons
+
+Integrating library for getImageSource and ToolbarAndroid support
+
+https://github.com/oblador/react-native-vector-icons#integrating-library-for-getimagesource-and-toolbarandroid-support

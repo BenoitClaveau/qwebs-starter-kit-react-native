@@ -1,13 +1,37 @@
-import { AppRegistry } from 'react-native';
-import { StackNavigator } from 'react-navigation';
-import HomeScreen from './app/home';
-import DetailsScreen from './app/details';
-import DetailScreen from './app/detail';
+import React, { Component } from 'react';
+import { AppRegistry, View } from 'react-native';
+import { Provider, connect } from 'react-redux';
+import { Font, AppLoading } from 'expo';
+import store from './src/redux/store';
+import Router from './src/pages/router';
 
-const App = StackNavigator({
-  Home: { screen: HomeScreen },
-  Details: { screen: DetailsScreen },
-  Detail: { screen: DetailScreen }
-});
+export default class App extends Component {
+  constructor(){
+    super();
+    this.state = {
+      isReady: false,
+    }
+  }
 
-AppRegistry.registerComponent('App', () => App);
+  async componentWillMount() {
+    await Font.loadAsync({
+      'Pacifico': require('./app/assets/fonts/Pacifico.ttf'),
+    });
+
+    this.setState({ isReady: true });
+  }
+
+
+  render() {
+    if (!this.state.isReady) {
+      return <AppLoading />;
+    }
+    return (
+      <Provider store={store}>
+        <Router />
+      </Provider>
+    );
+  }
+}
+
+AppRegistry.registerComponent('main', () => App);
