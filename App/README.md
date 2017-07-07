@@ -101,79 +101,7 @@ or
 After the emulator is running and the app on it, press the Menu button and then select "Debug JS Remotely" or "Debug in Chrome" (It depends the emulator using). You can see the next image as reference: emulator with steps image
 A new Chrome Tab will appears. You must press Ctrl + ⇧J to show the Developer tools and start tracking the debug steps. See this image as reference
 
-## Installation
-
-### Running your app on Android devices
-
-[https://facebook.github.io/react-native/docs/running-on-device.html](https://facebook.github.io/react-native/docs/running-on-device.html)
-
-```shell
-adb devices
-```
-
-Generate and run a Release build
-
-1. [Generating Signed APK](https://facebook.github.io/react-native/docs/signed-apk-android.html)
-
-Open a CMD console as Administrator
-```shell
-cd "C:\Program Files\Java\jdk1.8.0_121\bin"
-keytool -genkey -v -keystore my-release-key.keystore -alias my-key-alias -keyalg RSA -keysize 2048 -validity 10000
-```
-
-création du fichier my-release-key.keystore
-
-* Modify android/gradle.properties
-* Modify android/app/build.gradle
-* Compile cd android && ./gradlew assembleRelease
-* android/app/build/outputs/apk/app-release.apk will be generated
-* Enabling Proguard to reduce the size of the APK (optional)
-
-#### Run on mobile
-
-```shell
-react-native run-android --variant=release
-```
-
-#### Install on mobile
-
-```shell
-adb install android/app/build/outputs/apk/app-release.apk
-```
-#### Uninstall app
-
-Settings > Application manager > App > Unistall
-
-## React Native Components
-
-### Redux
-
-Open a CMD console as Administrator
-```shell
-cd App
-npm install --save redux
-npm install --save react-redux
-```
-
-Exemples:
-
-[https://github.com/cosmicjs/react-native-twitter-clone](https://github.com/cosmicjs/react-native-twitter-clone)
-
-### Icons
-
-[https://github.com/oblador/react-native-vector-icons](https://github.com/oblador/react-native-vector-icons)
-
-Open a CMD console as Administrator
-```shell
-cd App
-npm install --save react-native-vector-icons
-```
-
-#### Error: Build Tools revision (23.0.1) is too low for project
-
-1. Edit node_modules/react-native-vector-icons/android/build.gradle
-2. In the section of buildToolsVersion: 23.0.1.
-3. Change it into 25.0.0
+## Components
 
 ### Navigation
 
@@ -182,51 +110,21 @@ npm install --save react-native-vector-icons
 Open a CMD console as Administrator
 ```shell
 cd App
-npm install --save react-navigation
+npm install react-navigation --save
 ```
 
-How use redux and drawer  ?
-https://github.com/aksonov/react-native-router-flux/blob/master/docs/OTHER_INFO.md#drawer-side-menu-integration
-
-
-### Performance for event handlers
+### Icons
 
 Open a CMD console as Administrator
 ```shell
 cd App
-npm install --save react-timer-mixin
+npm install react-native-vector-icons --save
 ```
 
-```js
-import {Timer} from 'react-timer-mixin';
-class C extends Component {
-  componentWillUnmount () {
-    TimerMixin.componentWillUnmount.call(this);
-  }
+And follow instructions for Gradle
 
-  foo () {
-    TimerMixin.requestAntimationFrame.call(this, () => { ... }, 1000);
-  }
-}
-```
+https://github.com/oblador/react-native-vector-icons
 
-Or 
+Integrating library for getImageSource and ToolbarAndroid support
 
-```js
-import {Timer} from 'react-timer-mixin';
-
-class MyComponent extends Timer(React.Component) {
-...
-}
-```
-
-### Install rnpm
-
-```shell
-npm install rnpm -g
-rnpm link
-```
-
-
-
-
+https://github.com/oblador/react-native-vector-icons#integrating-library-for-getimagesource-and-toolbarandroid-support
