@@ -1,9 +1,8 @@
 export default {
-  view: {
-  },
-  label: {
-  },
-  input: {
+  big: {
     height: 200,
+  },
+  small: {
+    height: 45,
   }
 };

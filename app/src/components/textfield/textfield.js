@@ -1,18 +1,17 @@
 import React from 'react';
-import { TextInput, Text, View  } from 'react-native';
+import { Item, Label, Input } from 'native-base';
 import styles from './styles';
 
 export default (props) => (
-  <View
-    style={styles.view}>
-    <Text 
-        style={styles.label}>
-        {props.name}
-    </Text>
-    <TextInput
+  <Item stackedLabel>
+    <Label>{props.name}</Label>
+    <Input
       {...props}
       autoCapitalize="none"
-      style={styles.input}
+      style={props.big ? styles.big : styles.small}
+      maxLength={props.big ? 140 : 30}
+      multiline={props.big}
+      numberOfLines={props.big ? 5 : 1}
     />
-  </View>
+  </Item>
 )

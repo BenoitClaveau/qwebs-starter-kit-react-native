@@ -1,6 +1,6 @@
-# ada-app-react-native
+# React Native
 
-ADA app on your mobile phone
+Application
 
 ## React Native installation
 
@@ -16,7 +16,7 @@ Add path of npm module (C:\Users\your user name\AppData\Roaming\npm) to user sys
 npm install -g react-native-cli
 ```
 
-Install Android Studio
+[Download](https://developer.android.com/studio/index.html) and Install Android Studio
 
 Add ANDROID_HOME C:\Users\BenoitClaveau\AppData\Local\Android\sdk to user system variables.
 
@@ -27,12 +27,45 @@ Add ANDROID_HOME C:\Users\BenoitClaveau\AppData\Local\Android\sdk to user system
 #### Using Android Studio
 
 1. Start Android Studio.
-2. Go to Tools > Android > AVD Manager.
-3. Create a virtual device like Nexus 5.
-4. Start the virtual device.
-5. Close Android Studio.
+1. Go to Tools > Android > SDK Manager.
+1. Click on Show package details at bottom right
+  1. Google APIs
+  1. Android SDK Platform 23
+  1. Intel x86 Atom_64 System Image
+  1. Google APIs Intel x86 Atom_64 System Image
+1. Go to Tools > Android > AVD Manager.
+1. Create a virtual device like Nexus 5.
+1. Start the virtual device.
+1. Close Android Studio.
 
-#### Using command line
+1. Start a virtual device (Nexus 5)
+```shell
+npm run nexus
+```
+
+1. Start Visual Studio Code Debugger
+```launch.json
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Debug Android",
+            "program": "${workspaceRoot}/.vscode/launchReactNative.js",
+            "type": "reactnative",
+            "request": "launch",
+            "platform": "android",
+            "sourceMaps": true,
+            "outDir": "${workspaceRoot}/.vscode/.react"
+        }
+    ]
+}```
+
+1. Start packager
+```shell
+open http://localhost:8081
+```
+
+#### Command line
 
 List all virtual devices
 

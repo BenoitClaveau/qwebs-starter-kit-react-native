@@ -9,8 +9,9 @@ import {
 } from 'native-base';
 import { View } from 'react-native';
 import { Actions } from 'react-native-router-flux';
-import TextField from '../../components/textfield';
+import TextField from '../../components/TextField';
 import styles from './styles';
+
 import { authenticate } from '../../redux/reducers/users';
 
 const mapDispatchToProps = {authenticate};

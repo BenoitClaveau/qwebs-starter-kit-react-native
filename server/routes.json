@@ -1,10 +1,17 @@
 {
     "services": [
         { "name": "$http", "location": "qwebs-http" },
-        { "name": "$user", "location": "./services/user" }
+        { "name": "$user", "location": "./services/user" },
+        { "name": "$oauth2", "location": "./services/oauth2" }
     ],
     "locators": [
         { "get": "/user/:id", "service": "$user", "method": "getById" },
-        { "get": "/users", "service": "$user", "method": "list" }
+        { "get": "/users", "service": "$user", "method": "list" },
+        { "post": "/oauth/token", "service": "$oauth2", "method": "token" },
+        { "get": "/secret", "service": "$oauth2", "method": "secret" },
+        { "get": "/verify", "service": "$oauth2", "method": "verify" },
+        { "get": "/signin", "service": "$oauth2", "method": "signin" },
+        { "post": "/callback", "service": "$oauth2", "method": "callback" },
+        { "post": "/signin", "service": "$oauth2", "method": "signinPost" }
     ]
 }
