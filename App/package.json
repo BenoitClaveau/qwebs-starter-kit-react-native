@@ -8,9 +8,7 @@
     "nexus": "emulator.exe -avd Nexus_5X"
   },
   "dependencies": {
-    "@expo/vector-icons": "^5.0.0",
     "axios": "latest",
-    "expo": "^18.0.6",
     "form-data": "latest",
     "moment": "latest",
     "native-base": "latest",

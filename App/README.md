@@ -95,6 +95,10 @@ Start a virtual device
 npm run nexus
 ```
 
+Start packager
+
+react-native.cmd start --port 8081
+
 ### Start the app
 
 ```shell
