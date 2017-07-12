@@ -1,7 +1,6 @@
 import axios from 'axios';
 import FormData from 'form-data';
 import { Actions } from 'react-native-router-flux';
-import { clear } from './posts';
 
 // Constants
 const CREATE_USER = 'CREATE_USER';
@@ -90,6 +89,5 @@ export const authenticate = user => dispatch => {
 
 export const logoutUser = () => dispatch => {
   dispatch(logout());
-  dispatch(clear());
   Actions.welcome();
 }
