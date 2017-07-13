@@ -4,24 +4,19 @@ import { WebView, View, Text } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import styles from './styles';
 
-import { authenticate } from '../../redux/reducers/auth';
+import { saveToken } from '../../redux/reducers/auth';
 
-const mapDispatchToProps = {authenticate};
+const mapDispatchToProps = { saveToken }; //saveToken is now accessible through this.props.saveToken
 
-function mapStateToProps(state) {
-  return { token: state.token }
-}
+const mapStateToProps = ({ token }) => ({ token }); 
 
 class Login extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      token: undefined
-    };
   }
 
   render() {
-    if (!this.state.token) return this.renderLogin();
+    if (!this.props.token) return this.renderLogin();
     return this.renderScene();
   }
 
@@ -39,20 +34,27 @@ class Login extends Component {
     let m = /code=([\w-_+]*)/g.exec(navState.url);
     if (m) {
       let token = m[1];
-      this.setState({
-        token: token
-      })
-      Actions.welcome(); //Defined in router.js <Scene key=[key]... https://www.youtube.com/watch?v=JKIMbSXlMkY
+      this.props.saveToken(token); //call saveToken dispatcher in auth.js
+      // this.setState({
+      //   token: token
+      // })
+      //Actions.welcome(); //Defined in router.js <Scene key=[key]... https://www.youtube.com/watch?v=JKIMbSXlMkY
+
+
     }
   }
 
   renderScene(){
     return (
       <View>
-        <Text>Welcome {this.state.token}</Text>
+        <Text>You are already identify!</Text>
+        <Text>You token is: {this.state.token}</Text>
       </View>
     );
   }
 }
 
-export default connect(null, mapDispatchToProps)(Login);
+export default connect(mapStateToProps, mapDispatchToProps)(Login);
+
+// //if no state is used 
+// export default connect(null, mapDispatchToProps)(Login);

@@ -1,15 +1,20 @@
 import { Actions } from 'react-native-router-flux';
 
+const SAVE = "SAVE";
+
 // Action Creators
-const auth = () => ({ type: 'AUTH' });
+const save = token => ({ type: SAVE, token });
 
 // Reducer
 export default (state = {}, action) => {
   console.log('reducer was called with state', state, 'and action', action)
-  return state;
+  switch(action.type) {
+    case SAVE: return action.token;
+    default: return state;
+  }
 }
 
-export const token = (token) => dispatch => {
-  dispatch(auth());
+export const saveToken = (token) => dispatch => {
+  dispatch(save(token));
   Actions.welcome();
 }
