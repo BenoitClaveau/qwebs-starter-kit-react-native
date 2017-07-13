@@ -1,52 +1,57 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { WebView } from 'react-native';
+import { WebView, View, Text } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import styles from './styles';
 
-import { authenticate } from '../../redux/reducers/users';
+import { authenticate } from '../../redux/reducers/auth';
 
 const mapDispatchToProps = {authenticate};
+
+function mapStateToProps(state) {
+  return { token: state.token }
+}
 
 class Login extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      code: undefined,
-      token: undefined,
-      access: undefined,
-      response: undefined,
-      loading: false,
+      token: undefined
     };
   }
 
   render() {
-    //if (this.state.response) return this.renderResponse();
-    // if (this.state.access) return this.fetchProfile();
-    // if (this.state.token) return this.fetchAccess();
-    // if (this.state.code) return this.fetchToken();
-
+    if (!this.state.token) return this.renderLogin();
     return this.renderScene();
   }
 
-  renderScene(){
+  renderLogin(){
     return (
       <WebView
         source={{uri: 'http://10.0.0.23:3000/signin?client_id=4&redirect_uri=redirect_uri_value'}}
         javaScriptEnabled={true}
-        automaticallyAdjustContentInsets={false}
-        scalesPageToFit={true}
         onNavigationStateChange={this.onNavigationStateChange.bind(this)}
       />
     );
   }
 
   onNavigationStateChange(navState) {
-    if ((/code=/g).test(String(navState.url))) {
+    let m = /code=([\w-_+]*)/g.exec(navState.url);
+    if (m) {
+      let token = m[1];
       this.setState({
-        code: String(navState.url).replace(`redirect_uri_value?code=`,'')
-      });
+        token: token
+      })
+      Actions.welcome(); //Defined in router.js <Scene key=[key]... https://www.youtube.com/watch?v=JKIMbSXlMkY
     }
+  }
+
+  renderScene(){
+    return (
+      <View>
+        <Text>Welcome {this.state.token}</Text>
+      </View>
+    );
   }
 }
 

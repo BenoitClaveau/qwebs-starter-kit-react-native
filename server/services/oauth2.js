@@ -21,6 +21,7 @@ class OAuth2 extends OAuth2Service {
         response.send({ request: request, statusCode: 200, headers: { "Content-Type": "text/html"}, content: `<!DOCTYPE html>
 <html>
     <body>
+        <h1>BALTO</h1>
         <form method="POST">
             <p>Login using OpenID</p>
             <input type="text" name="login" />
@@ -34,12 +35,12 @@ class OAuth2 extends OAuth2Service {
     }
 
     signinPost(request, response) {
-        if (!request.body.client_id) throw new DataError({ message: "client_id is not defined."})
-        if (!request.body.redirect_uri) throw new DataError({ message: "redirect_uri is not defined."})
+        //if (!request.body.client_id) throw new DataError({ message: "client_id is not defined."})
+        //if (!request.body.redirect_uri) throw new DataError({ message: "redirect_uri is not defined."})
 
-        return this._generateToken();
+        //return this._generateToken();
 
-        response.redirect({ url: request.body.redirect_uri });
+        response.redirect({ url: "http://10.0.0.23:3000/callback?code=12345" });
     }
 
     callback(request, response) {

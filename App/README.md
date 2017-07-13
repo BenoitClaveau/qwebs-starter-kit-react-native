@@ -43,27 +43,31 @@ Add ANDROID_HOME C:\Users\BenoitClaveau\AppData\Local\Android\sdk to user system
 npm run nexus
 ```
 
-1. Start Visual Studio Code Debugger
+1. Open packager
+```shell
+open http://localhost:8081
+```
+
+1. Start the appliaction
+```shell
+react-native run-android
+```
+
+1. Attach VSCode to packager adn start the debugger
 ```launch.json
 {
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Debug Android",
+            "name": "Attach to packager",
             "program": "${workspaceRoot}/.vscode/launchReactNative.js",
             "type": "reactnative",
-            "request": "launch",
-            "platform": "android",
+            "request": "attach",
             "sourceMaps": true,
             "outDir": "${workspaceRoot}/.vscode/.react"
         }
     ]
 }```
-
-1. Start packager
-```shell
-open http://localhost:8081
-```
 
 #### Command line
 
@@ -239,3 +243,28 @@ These steps are optional and only needed if you want to use the `Icon.getImageSo
   ```
 
 *Note: If you're using React Native (Android) <= 0.17, [follow this instructions](https://github.com/oblador/react-native-vector-icons/blob/2fe5b97afa849652215e3258189e8ca3ea775c53/README.md#integrating-library-for-getimagesource-support)*
+
+### Redux
+```shell
+cd App
+npm install redux --save
+npm install react-redux --save
+```
+
+(https://github.com/happypoulp/redux-tutorial)[https://github.com/happypoulp/redux-tutorial]
+
+### Redux router 
+
+```shell
+cd App
+react-native-router-flux
+```
+
+[https://github.com/aksonov/react-native-router-flux/blob/master/docs/API_CONFIGURATION.md](RNRF API)
+
+Create the router in src/pages/router.js to defined your routes accessible from Action.[key] 
+
+exemple:
+<Scene key="login" => show by calling Actions.login
+
+(https://www.youtube.com/watch?v=NOgoU95FrrQ)[tutorial]
