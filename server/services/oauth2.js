@@ -9,6 +9,7 @@
 const OAuth2Service = require("qwebs-oauth2");
 const DataError = require("qwebs").DataError;
 const OAuth2Options = require("qwebs-oauth2").OAuth2MemoryOptions;
+const uuid = require("uuid/v4");
 
 class OAuth2 extends OAuth2Service {
     constructor() {
@@ -40,14 +41,13 @@ class OAuth2 extends OAuth2Service {
 
         //return this._generateToken();
 
-        response.redirect({ url: "http://10.0.0.23:3000/callback?code=12345" });
+        response.redirect({ url: `http://10.0.0.23:3000/callback?code=${uuid()}` });
     }
 
     callback(request, response) {
         response.send({ request: request, statusCode: 200, headers: { "Content-Type": "text/html"}, content: `<!DOCTYPE html>
 <html>
     <body>
-        <p>Welcome ${request.body.openid_identifier}</p>
     </body>
 </html>`});
     }

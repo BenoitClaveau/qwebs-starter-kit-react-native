@@ -6,15 +6,25 @@ const SAVE = "SAVE";
 const save = token => ({ type: SAVE, token });
 
 // Reducer
-export default (state = {}, action) => {
+const initialState = {
+    token: null,
+};
+export default (state = initialState, action) => {
   console.log('reducer was called with state', state, 'and action', action)
   switch(action.type) {
-    case SAVE: return action.token;
+    case SAVE: return { ...state, token: action.token }; //store auth.token = "4gt54..."
     default: return state;
   }
 }
 
-export const saveToken = (token) => dispatch => {
-  dispatch(save(token));
-  Actions.welcome();
+export const saveToken = (token) => dispatch => {  
+  Actions.welcome({type: 'replace'});
+  setTimeout(() => {
+    dispatch(save(token));
+  }, 250);
+}
+
+export const resetToken = () => dispatch => {
+  dispatch(save(null));
+  //Actions.login();
 }

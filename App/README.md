@@ -268,3 +268,10 @@ exemple:
 <Scene key="login" => show by calling Actions.login
 
 (https://www.youtube.com/watch?v=NOgoU95FrrQ)[tutorial]
+
+
+[http://densitylabs.io/blog/adding-authentication-to-your-react-native-app](http://densitylabs.io/blog/adding-authentication-to-your-react-native-app)
+
+# Tools
+
+[https://randomuser.me/](https://randomuser.me/)

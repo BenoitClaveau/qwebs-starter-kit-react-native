@@ -6,7 +6,8 @@
   "dependencies": {
     "qwebs": "latest",
     "qwebs-http": "latest",
-    "qwebs-oauth2": "latest"
+    "qwebs-oauth2": "latest",
+    "uuid": "^3.1.0"
   },
   "devDependencies": {
     "coveralls": "latest",
