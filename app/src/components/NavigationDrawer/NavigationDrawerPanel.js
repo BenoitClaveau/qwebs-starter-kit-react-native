@@ -6,9 +6,9 @@ import styles from './styles';
 export default (props, context) => {
   const drawer = context.drawer;
   return (
-    <View style={[styles.container, props.sceneStyle ]}>
-      <Text>Tab {props.title}</Text>
-      <Button onPress={() => { drawer.close(); Actions.main(); }}>Switch to main</Button>
+    <View style={styles.container}>
+      <Text>Tab 1</Text>
+      <Text>Tab 2</Text>
     </View>
   );
 };

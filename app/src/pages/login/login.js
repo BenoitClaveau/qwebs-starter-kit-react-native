@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { WebView, View, Text, Button } from 'react-native';
-import { Actions } from 'react-native-router-flux';
 import styles from './styles';
 
 import { 
@@ -10,10 +9,6 @@ import {
 } from '../../redux/reducers/auth';
 
 const mapDispatchToProps = { saveToken, resetToken }; //saveToken dispatcher is now accessible through this.props.saveToken
-
-// function mapStateToProps(state) {
-//   return { token: state.auth }
-// }
 
 const mapStateToProps = ({ auth }) => ({ auth }); 
 
