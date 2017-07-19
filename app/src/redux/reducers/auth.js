@@ -1,14 +1,15 @@
-//import { Actions } from 'react-native-router-flux';
+//import { gotoAction } from './page';
 
 const SAVE = "SAVE";
 
 // Action Creators
-const save = token => ({ type: SAVE, token });
+const saveAction = token => ({ type: SAVE, token });
 
 // Reducer
 const initialState = {
     token: null,
 };
+
 export default (state = initialState, action) => {
   console.log('reducer was called with state', state, 'and action', action)
   switch(action.type) {
@@ -17,14 +18,12 @@ export default (state = initialState, action) => {
   }
 }
 
-export const saveToken = (token) => dispatch => {  
-  Actions.welcome({type: 'replace'});
-  setTimeout(() => {
-    dispatch(save(token));
-  }, 250);
+//use redux-thunk see https://github.com/gaearon/redux-thunk
+export const saveToken = (token) => (dispatch, getState) => {  
+  dispatch(saveAction(token));
+  //dispatch(gotoAction("Welcome")); Not good to call action of other reducer
 }
 
 export const resetToken = () => dispatch => {
-  dispatch(save(null));
-  //Actions.login();
+  dispatch(saveAction(null));
 }

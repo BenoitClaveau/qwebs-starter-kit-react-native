@@ -16,9 +16,9 @@ import { bindActionCreators } from 'redux';
 import Login from '../login';
 import Welcome from '../welcome';
 
-import Drawer from '../../components/Drawer'; 
+import NavigationDrawer from '../../components/NavigationDrawer'; 
 
-import * as Actions from '../../redux/reducers/navigation';
+import * as Actions from '../../redux/reducers/route';
 
 const mapStateToProps = ({ navigation, auth }) => ({ navigation, auth }); 
 
@@ -32,7 +32,7 @@ class Routes extends Component {
     this.toolbarActions = [{title: 'Create', iconName: 'filter-list', show: 'always', titleColor: "#252a2d"}];
   }
 
-  componentWillReceiveProps(nextProps) {
+  componentWillReceiveProps(nextProps) {  //Update the state of the components to be sync with redux state
     //open or close drawer
     if (this.props.navigation.drawer !== nextProps.navigation.drawer) {
       if (nextProps.navigation.drawer) this.drawer.openDrawer();
@@ -61,10 +61,10 @@ class Routes extends Component {
       <DrawerLayoutAndroid
         drawerWidth={300}
         drawerPosition={DrawerLayoutAndroid.positions.Left}
-        renderNavigationView={() => <Drawer/> }
+        renderNavigationView={() => <NavigationDrawer/> }   //Link NavigationDrawer
         ref={(ref) => { this.drawer = ref; }}
-        onDrawerOpen={() => this.props.setDrawerToOpen()}
-        onDrawerClose={() => this.props.setDrawerToClose()}    
+        onDrawerOpen={() => this.props.setDrawerToOpen()}   //Link redux state with component state
+        onDrawerClose={() => this.props.setDrawerToClose()} 
       >
         <View>
           <Icon.ToolbarAndroid
@@ -74,13 +74,13 @@ class Routes extends Component {
             title="ok"
             titleColor="#252a2d"
             actions={this.toolbarActions}
-            onActionSelected={() => this.props.toggleDrawer()}      
+            onActionSelected={() => this.props.toggleDrawer()} //Call dispatcher to modify state   
             onIconClicked={() => this.props.toggleDrawer()}      
           />
           <ViewPagerAndroid
             style={styles.viewPager}
             ref = {viewPager =>{ this.viewPager = viewPager }}
-            onPageSelected={(e) => this.props.setRouterPage(e.nativeEvent.position)}
+            onPageSelected={(e) => this.props.setRouterPage(e.nativeEvent.position)} //Call dispatcher to modify state   
           >
             <View>
               <Text>Leads</Text>
@@ -110,4 +110,4 @@ class Routes extends Component {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Routes);
+export default connect(mapStateToProps, mapDispatchToProps)(Routes); //Connect component to the store

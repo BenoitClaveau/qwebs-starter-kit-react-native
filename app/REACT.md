@@ -50,7 +50,7 @@ import {
   setDrawerToClose,
   setDrawerToOpen,
   setRouterPage
-} from '../../redux/reducers/navigation';
+} from '../../redux/reducers/route';
 
 //link dispatcher manually
 const mapDispatchToProps = { 
@@ -65,7 +65,7 @@ const mapDispatchToProps = {
 import { bindActionCreators } from 'redux';
 
 //import all actions
-import * as Actions from '../../redux/reducers/navigation';
+import * as Actions from '../../redux/reducers/route';
 
 //Turns an object whose values are action creators
 const mapDispatchToProps = (dispatch) => {
@@ -109,3 +109,11 @@ componentWillReceiveProps(nextProps) {
     }
   }
   ```
+
+## react-navigation
+
+```shell
+npm install --save react-navigation@latest
+npm install --save react-native-drawer-layout-polyfill
+npm install --save react-native-tab-view
+```
