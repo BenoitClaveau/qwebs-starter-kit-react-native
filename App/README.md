@@ -43,11 +43,6 @@ Add ANDROID_HOME C:\Users\BenoitClaveau\AppData\Local\Android\sdk to user system
 npm run nexus
 ```
 
-1. Open packager
-```shell
-open http://localhost:8081
-```
-
 1. Start the appliaction
 ```shell
 react-native run-android
@@ -68,6 +63,14 @@ react-native run-android
         }
     ]
 }```
+
+#### Debug in manually in chrome
+
+1. Open packager
+```shell
+open http://localhost:8081
+open http://localhost:8081/debugger-ui
+```
 
 #### Command line
 
@@ -101,7 +104,7 @@ npm run nexus
 
 Start packager
 
-react-native.cmd start --port 8081
+react-native start --port 8081
 
 ### Start the app
 
@@ -160,6 +163,7 @@ Open a CMD console as Administrator
 ```shell
 cd App
 npm install react-native-vector-icons --save
+react-native link react-native-vector-icons
 ```
 
 And follow instructions for Gradle (https://github.com/oblador/react-native-vector-icons)[https://github.com/oblador/react-native-vector-icons]
@@ -185,6 +189,11 @@ project.ext.vectoricons = [
 
 apply from: "../../node_modules/react-native-vector-icons/fonts.gradle"
 ```
+
+Fix The SDK Build Tools revision (23.0.1) is too low for project ':react-native-vector-icons'. Minimum required is 25.0.0
+
+>node_modules\react-native-vector-icons\android\build.gradle
+>modify android buildToolsVersion to 25.0.0
 
 ##### Option: Manually
 

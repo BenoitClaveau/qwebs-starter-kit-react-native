@@ -10,35 +10,21 @@ import {
   ViewPagerAndroid
 } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons'; 
+import styles from './styles';
+import { bindActionCreators } from 'redux';
 
 import Login from '../login';
 import Welcome from '../welcome';
 
 import Drawer from '../../components/Drawer'; 
 
-// const mapStateToProps = (state, ownProps) => {
-//   console.log(state); // state
-//   console.log(ownProps); // ownProps
-
-//   return {
-//     drawer: state.navigation.drawer,
-//     page: state.navigation.page
-//   }
-// }
+import * as Actions from '../../redux/reducers/navigation';
 
 const mapStateToProps = ({ navigation, auth }) => ({ navigation, auth }); 
 
-import { 
-  toggleDrawer,
-  setDrawerToClose,
-  setDrawerToOpen
-} from '../../redux/reducers/navigation';
-
-const mapDispatchToProps = { 
-  toggleDrawer,
-  setDrawerToClose,
-  setDrawerToOpen 
-};
+const mapDispatchToProps = (dispatch) => {
+  return bindActionCreators(Actions, dispatch);
+}
 
 class Routes extends Component {
   constructor() {
@@ -47,14 +33,20 @@ class Routes extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
+    //open or close drawer
     if (this.props.navigation.drawer !== nextProps.navigation.drawer) {
       if (nextProps.navigation.drawer) this.drawer.openDrawer();
       else this.drawer.closeDrawer();
     }
+
+    //change page
+    if (this.props.navigation.page !== nextProps.navigation.page) {
+      this.viewPager.setPage(nextProps.navigation.page);
+    }
   }
 
   render() {
-    if (!this.props.auth.token) return this.renderLogin();
+    //if (!this.props.auth.token) return this.renderLogin();
     return this.renderScene();
   }
 
@@ -87,8 +79,8 @@ class Routes extends Component {
           />
           <ViewPagerAndroid
             style={styles.viewPager}
-            ref = {viewPager =>{ this.viewPager = viewPager;}}
-            initialPage={this.props.page}
+            ref = {viewPager =>{ this.viewPager = viewPager }}
+            onPageSelected={(e) => this.props.setRouterPage(e.nativeEvent.position)}
           >
             <View>
               <Text>Leads</Text>

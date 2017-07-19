@@ -1,20 +1,27 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { 
-  StyleSheet,
   ScrollView,
   View,
   Image
 } from 'react-native';
-import MenuItem from './menu-item.js';
-import MenuSubItem from './menu-sub-item.js';
-import MenuLine from './menu-line.js';
-import MenuSubLine from './menu-sub-line.js';
-import MenuSpace from './menu-space.js';
+import MenuItem from './MenuItem.js';
+import MenuSubItem from './MenuSubItem.js';
+import MenuLine from './MenuLine.js';
+import MenuSubLine from './MenuSubLine.js';
+import MenuSpace from './MenuSpace.js';
+import styles from './styles';
+import { bindActionCreators } from 'redux';
+import * as Actions from '../../redux/reducers/navigation';
 
-export default class Drawer extends React.Component {
+const mapDispatchToProps = (dispatch) => {
+  return bindActionCreators(Actions, dispatch);
+}
+
+class Drawer extends Component {
 
   onMenuItemClick(pageIndex) {
-    console.log("click")
+    this.props.setRouterPage(pageIndex);
   }
 
   render() {
@@ -51,19 +58,4 @@ export default class Drawer extends React.Component {
   }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#252a2d', /*gris foncé*/
-  },
-  header: {
-    height: 165,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  logo: {
-    height: 34,
-    width: 100,
-  }
-});
-
+export default connect(null, mapDispatchToProps)(Drawer);

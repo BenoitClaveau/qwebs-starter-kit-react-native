@@ -66,6 +66,3 @@ class Login extends Component {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Login);
-
-// //if no state is used 
-// export default connect(null, mapDispatchToProps)(Login);
