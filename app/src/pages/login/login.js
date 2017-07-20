@@ -10,14 +10,20 @@ const mapDispatchToProps = { saveToken, resetToken, goto }; //saveToken dispatch
 const mapStateToProps = ({ auth }) => ({ hasToken: auth.token != null }); 
 
 class Login extends Component {
+
+  //react-navigation options
+  static navigationOptions = {
+    title: 'Login',
+  };
+
   constructor(props) {
     super(props);
     this.ready = false;
   }
 
-  componentWillReceiveProps(nextProps) { 
-    if (nextProps.hasToken) this.props.goto("Welcome");
-  }
+  // componentWillReceiveProps(nextProps) { 
+  //   if (nextProps.hasToken) this.props.goto("Welcome");
+  // }
 
   render() {
     if (!this.props.hasToken) return this.renderLogin();

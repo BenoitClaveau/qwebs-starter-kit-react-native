@@ -9,12 +9,29 @@ import {
 } from 'native-base';
 import { View } from 'react-native';
 import styles from './styles';
-import { goto } from '../../redux/reducers/page';
+import appStyles from '../app/styles';
 
-const mapDispatchToProps = { goto };
+import { goto } from '../../redux/reducers/page';
+import { resetToken } from '../../redux/reducers/auth';
+
+const mapDispatchToProps = { goto, resetToken };
 const mapStateToProps = ({}) => ({}); 
 
-class Login extends Component {
+class Welcome extends Component {
+
+  static navigationOptions = {
+    title: 'Welcome',
+
+    drawerLabel: 'Welcome',
+    drawerIcon: ({ tintColor }) => (
+      <Icon
+        style={{color: tintColor}}
+        ios="ios-happy-outline"
+        android="md-hammer"
+      />
+    ),
+  };
+
   constructor(props) {
     super(props);
   }
@@ -35,17 +52,17 @@ class Login extends Component {
             <Button
               block
               style={styles.button}
-              onPress={() => this.props.goto("Login")}
+              onPress={() => this.props.resetToken()}
             >
-              <Text>Log in</Text>
+              <Text>Log out</Text>
             </Button>
             <Text style={styles.or}>OR</Text>
             <Button
               block
               style={styles.button}
-              onPress={() => this.props.goto("Signup")}
+              onPress={() => this.props.goto("Settings")}
             >
-              <Text>Sign up</Text>
+              <Text>Settings</Text>
             </Button>
           </View>
         </Content>
@@ -54,4 +71,4 @@ class Login extends Component {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Login);
+export default connect(mapStateToProps, mapDispatchToProps)(Welcome);

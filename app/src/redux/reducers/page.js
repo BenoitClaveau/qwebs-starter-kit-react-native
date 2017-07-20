@@ -3,7 +3,11 @@
 import { NavigationActions } from 'react-navigation';
 
 export const Action = {
-  goto: (routeName) => NavigationActions.navigate({ routeName: routeName }),
+  goto: (routeName, params = {}) => NavigationActions.navigate({ 
+    routeName: routeName,
+    params: params,
+    //action: NavigationActions.navigate({ routeName: 'SubProfileRoute'})
+  }),
   back: (routeName) => NavigationActions.back({})
 }
 
