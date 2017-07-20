@@ -1,6 +1,4 @@
-# React
-
-## Components
+## React & Redux
 
 ### Binding
 
@@ -36,9 +34,9 @@ export default class Drawer extends Component {
 ```
 
 
-## Redux
+### Redux
 
-### mapDispatchToProps
+#### mapDispatchToProps
 
 Import all actions from reducers
 
@@ -73,7 +71,7 @@ const mapDispatchToProps = (dispatch) => {
 }
 ```
 
-### mapStateToProps
+#### mapStateToProps
 
 
 Verbose mode
@@ -96,7 +94,7 @@ Short mode
 const mapStateToProps = ({ navigation, auth }) => ({ navigation, auth });
 ```
 
-### Sync components with redux state
+#### Sync components with redux state
 
 componentWillReceiveProps is call when props changed
 
@@ -110,7 +108,7 @@ componentWillReceiveProps(nextProps) {
   }
   ```
 
-## react-navigation
+### react-navigation
 
 ```shell
 npm install --save react-navigation@latest
