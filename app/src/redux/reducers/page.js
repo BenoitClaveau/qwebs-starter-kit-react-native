@@ -2,8 +2,10 @@
 
 import { NavigationActions } from 'react-navigation';
 
-export const gotoAction = (routeName) => NavigationActions.navigate({ routeName: routeName })
-export const backAction = (routeName) => NavigationActions.back({})
+export const Action = {
+  goto: (routeName) => NavigationActions.navigate({ routeName: routeName }),
+  back: (routeName) => NavigationActions.back({})
+}
 
 const initialState = {};
 export default (state = initialState, action) => {
@@ -11,9 +13,9 @@ export default (state = initialState, action) => {
 };
 
 export const goto = (routeName) => (dispatch, getState) => {
-  dispatch(gotoAction(routeName));
+  dispatch(Action.goto(routeName));
 }
 
 export const back = () => (dispatch, getState) => {
-  dispatch(backAction());
+  dispatch(Action.back());
 }

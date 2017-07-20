@@ -6,10 +6,12 @@ const DRAWER_TO_OPEN = "DRAWER_TO_OPEN";
 const ROUTER_PAGE = "ROUTER_PAGE";
 
 // Action Creators
-const toggle = () => ({ type: DRAWER_TOGGLE });
-const toClose = () => ({ type: DRAWER_TO_CLOSE });
-const toOpen = () => ({ type: DRAWER_TO_OPEN });
-const setPage = (page) => ({ type: ROUTER_PAGE, page: page });
+export const Action = {
+  toggle: () => ({ type: DRAWER_TOGGLE }),
+  close: () => ({ type: DRAWER_TO_CLOSE }),
+  open: () => ({ type: DRAWER_TO_OPEN }),
+  page: (page) => ({ type: ROUTER_PAGE, page: page })
+};
 
 // Reducer
 const initialState = {
@@ -29,16 +31,16 @@ export default (state = initialState, action) => {
 }
 
 export const toggleDrawer = () => dispatch => {  
-  dispatch(toggle());
+  dispatch(Action.toggle());
 }
 
 export const setDrawerToClose = () => dispatch => {  
-  dispatch(toClose());
+  dispatch(Action.close());
 }
 export const setDrawerToOpen = () => dispatch => {  
-  dispatch(toOpen());
+  dispatch(Action.open());
 }
 
 export const setRouterPage = (page) => dispatch => {  
-  dispatch(setPage(page));
+  dispatch(Action.page(page));
 }
