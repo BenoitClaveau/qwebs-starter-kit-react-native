@@ -9,3 +9,11 @@ export default (state = initialState, action) => {
   const nextState = AppNavigator.router.getStateForAction(action, state);
   return nextState || state;
 };
+
+
+// return  AppNavigator.router.getStateForAction(NavigationActions.reset({
+//                 index: 0,
+//                 actions: [
+//                     NavigationActions.navigate({ routeName: 'Main'})
+//                 ]
+//             }), state);

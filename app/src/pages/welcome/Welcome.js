@@ -19,18 +19,18 @@ const mapStateToProps = ({}) => ({});
 
 class Welcome extends Component {
 
-  static navigationOptions = {
-    title: 'Welcome',
+  // static navigationOptions = {
+  //   title: 'Welcome',
 
-    drawerLabel: 'Welcome',
-    drawerIcon: ({ tintColor }) => (
-      <Icon
-        style={{color: tintColor}}
-        ios="ios-happy-outline"
-        android="md-hammer"
-      />
-    ),
-  };
+  //   drawerLabel: 'Welcome',
+  //   drawerIcon: ({ tintColor }) => (
+  //     <Icon
+  //       style={{color: tintColor}}
+  //       ios="ios-happy-outline"
+  //       android="md-hammer"
+  //     />
+  //   ),
+  // };
 
   constructor(props) {
     super(props);
