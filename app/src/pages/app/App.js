@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 import AppNavigator from './AppNavigator';
 import Login from '../login';
 
-const mapStateToProps = ({ nav, auth }) => ({ nav, hasToken: auth.token != null }); 
+const mapStateToProps = ({ nav, auth }) => ({ nav, hasToken: auth.token != null });
 
 // const mapStateToProps = (state) => ({
 //   nav: state.nav
@@ -19,7 +19,7 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    BackHandler.addEventListener('hardwareBackPress', function() { 
+    BackHandler.addEventListener('hardwareBackPress', function() {
       let {dispatch, rootNavigation} = this.props;
       // Close the drawer if necessary.
       if (rootNavigation.routes[rootNavigation.index].key === 'DrawerOpen') {
@@ -29,8 +29,8 @@ class App extends React.Component {
     });
   }
 
-  componentWillReceiveProps(nextProps) { 
-    if (nextProps.hasToken) 
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.hasToken)
       console.log("Authenticated");
   }
 
@@ -50,11 +50,11 @@ class App extends React.Component {
       <AppNavigator navigation={addNavigationHelpers({
         dispatch: this.props.dispatch,
         state: this.props.nav,
-      })} />
+      })}
+      />
     );
   }
 }
-
 
 
 export default connect(mapStateToProps)(App);

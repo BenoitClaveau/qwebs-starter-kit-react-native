@@ -14,7 +14,7 @@ import {
   Icon,
   Right
 } from 'native-base';
-import { View } from 'react-native';
+import { View, TouchableOpacity } from 'react-native';
 import styles from './styles';
 import appStyles  from '../app/styles';
 
@@ -34,12 +34,20 @@ class Settings extends Component {
         />
       </View>
     ),
-    drawerLabel: ({ tintColor, focused }) => (
-      <View style={{flex: 1, flexDirection: "column", justifyContent: 'space-between', height: 80}}>
-        <Text>Test</Text>
-        <Text>32</Text>
-      </View>
-    )
+    // drawerLabel: ({ tintColor, focused }) => (
+    //   <View style={{flex: 1, flexDirection: "column", justifyContent: 'space-between', height: 80}}>
+    //     <TouchableOpacity 
+    //       onPress={() => this.props.navigation.navigate("settings")}
+    //     >
+    //       <Text>Settings</Text>
+    //     </TouchableOpacity>
+    //     <TouchableOpacity 
+    //       onPress={() => this.props.navigation.navigate("test")}
+    //     >
+    //       <Text>Test</Text>
+    //     </TouchableOpacity>
+    //   </View>
+    // )
   };
 
   constructor(props) {
