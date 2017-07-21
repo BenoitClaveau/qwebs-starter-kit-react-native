@@ -11,6 +11,7 @@ import {
   Icon,
 } from 'native-base';
 import styles from './styles';
+import DrawerButton from '../../components/DrawerButton';
 import Login from '../login';
 import Welcome from '../welcome';
 import Settings from '../settings';
@@ -54,17 +55,18 @@ const image = require("../../assets/images/logo-audi.png");
 //   )
 // });
 
-const Stack = TabNavigator({
+const Tab = TabNavigator({
   settings: {
     screen: Settings,
-    path: "settings"
+    path: "settings",
+    navigationOptions: {
+      tabBarLabel: 'My settings',
+    }
   },
   test: {
     screen: Test,
     path: "test"
   },
-}, {
-   headerMode: 'none'
 });
 
 //Main view
@@ -73,8 +75,8 @@ const Main = DrawerNavigator({
     screen: Welcome,
     path: "welcome"
   },
-  stack: {
-    screen: Stack
+  tab: {
+    screen: Tab
   }
 }, {
   //contentComponent: DrawerMenu,
@@ -105,18 +107,6 @@ const AppNavigator = StackNavigator({
     headerTitleStyle: { color: "#FFF" }
   }),
 });
-
-class DrawerButton extends Component {
-  render() {
-    return (
-      <View style={{padding: 16 }}>
-        <TouchableHighlight onPress={() => this.props.navigation.navigate("DrawerOpen")}>
-          <Icon name="menu" />
-        </TouchableHighlight>
-      </View>
-    )
-  }
-};
 
 export default AppNavigator;
 

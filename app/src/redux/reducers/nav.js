@@ -14,5 +14,11 @@ const initialState=AppNavigator.router.getStateForAction(NavigationActions.reset
 }))
 
 export default (state = initialState, action) => {
-  return AppNavigator.router.getStateForAction(action, state) || state;
+  let nextState = AppNavigator.router.getStateForAction(action, state) || state;
+  switch(action.routeName) {
+    case "DrawerOpen": return {...nextState, drawerOpen: true };
+    case "DrawerClose": return {...nextState, drawerOpen: false };
+    default: return nextState;
+  }
+
 };
