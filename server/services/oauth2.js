@@ -22,9 +22,9 @@ class OAuth2 extends OAuth2Service {
         response.send({ request: request, statusCode: 200, headers: { "Content-Type": "text/html"}, content: `<!DOCTYPE html>
 <html>
     <body>
-        <h1>BALTO</h1>
+        <h1>SSO</h1>
         <form method="POST">
-            <p>Login using OpenID</p>
+            <p>Login</p>
             <input type="text" name="login" />
             <input type="password" name="password" />
             <input type="submit" value="Login" />

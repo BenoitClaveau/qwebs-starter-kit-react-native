@@ -3,9 +3,9 @@ import FormData from 'form-data';
 import { Actions } from 'react-native-router-flux';
 
 // Constants
-const CREATE_USER = 'CREATE_USER';
-const LOGIN = 'LOGIN';
-const LOGOUT = 'LOGOUT';
+const CREATE_USER = 'USER_CREATE';
+const LOGIN = 'USER_LOGIN';
+const LOGOUT = 'USER_LOGOUT';
 
 // Action Creators
 const createUser = user => ({ type: CREATE_USER, user });

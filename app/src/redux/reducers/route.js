@@ -1,9 +1,9 @@
 //Reducer of routes (AndroidToolbar) 
 
-const DRAWER_TOGGLE = "DRAWER_TOGGLE";
-const DRAWER_TO_CLOSE = "DRAWER_TO_CLOSE";
-const DRAWER_TO_OPEN = "DRAWER_TO_OPEN";
-const ROUTER_PAGE = "ROUTER_PAGE";
+const DRAWER_TOGGLE = "ROUTE_DRAWER_TOGGLE";
+const DRAWER_TO_CLOSE = "ROUTE_DRAWER_TO_CLOSE";
+const DRAWER_TO_OPEN = "ROUTE_DRAWER_TO_OPEN";
+const ROUTER_PAGE = "ROUTE_ROUTER_PAGE";
 
 // Action Creators
 export const Action = {

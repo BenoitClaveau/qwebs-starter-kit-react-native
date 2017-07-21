@@ -4,9 +4,8 @@ import { WebView, View, Text, Button } from 'react-native';
 import styles from './styles';
 
 import { saveToken, resetToken } from '../../redux/reducers/auth';
-import { goto } from '../../redux/reducers/page';
 
-const mapDispatchToProps = { saveToken, resetToken, goto }; //saveToken dispatcher is now accessible through this.props.saveToken
+const mapDispatchToProps = { saveToken, resetToken }; //saveToken dispatcher is now accessible through this.props.saveToken
 const mapStateToProps = ({ auth }) => ({ hasToken: auth.token != null }); 
 
 class Login extends Component {
@@ -20,10 +19,6 @@ class Login extends Component {
     super(props);
     this.ready = false;
   }
-
-  // componentWillReceiveProps(nextProps) { 
-  //   if (nextProps.hasToken) this.props.goto("Welcome");
-  // }
 
   render() {
     if (!this.props.hasToken) return this.renderLogin();

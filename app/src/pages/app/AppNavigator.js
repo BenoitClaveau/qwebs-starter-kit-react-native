@@ -55,18 +55,25 @@ const image = require("../../assets/images/logo-audi.png");
 // });
 
 const Stack = TabNavigator({
-   Settings: {screen: Settings },
-   Welcome: {screen: Welcome },
-   Test: {screen: Test},
+  settings: {
+    screen: Settings,
+    path: "settings"
+  },
+  test: {
+    screen: Test,
+    path: "test"
+  },
 }, {
    headerMode: 'none'
 });
 
-const Drawer = DrawerNavigator({
-  Welcome: {
-    screen: Welcome
+//Main view
+const Main = DrawerNavigator({
+  welcome: {
+    screen: Welcome,
+    path: "welcome"
   },
-  Stack: {
+  stack: {
     screen: Stack
   }
 }, {
@@ -80,10 +87,10 @@ const Drawer = DrawerNavigator({
   }
 });
 
-
 const AppNavigator = StackNavigator({
-  Welcome: {
-    screen: Welcome,
+  main: {
+    screen: Main,
+    path: "main",
     navigationOptions: {
       title: `Welcome 2`,
     }
@@ -103,7 +110,7 @@ class DrawerButton extends Component {
   render() {
     return (
       <View style={{padding: 16 }}>
-        <TouchableHighlight onPress={() => this.props.navigation.goBack(null)}>
+        <TouchableHighlight onPress={() => this.props.navigation.navigate("DrawerOpen")}>
           <Icon name="menu" />
         </TouchableHighlight>
       </View>
@@ -121,3 +128,6 @@ export default AppNavigator;
 
 //Signin signup
 //https://medium.com/the-react-native-log/building-an-authentication-flow-with-react-navigation-fb5de2203b5c
+
+//Nested Navigator
+//https://github.com/react-community/react-navigation/blob/master/docs/guides/Guide-Nested.md

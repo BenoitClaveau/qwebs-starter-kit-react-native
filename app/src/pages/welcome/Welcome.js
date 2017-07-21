@@ -11,10 +11,9 @@ import { View } from 'react-native';
 import styles from './styles';
 import appStyles from '../app/styles';
 
-import { goto } from '../../redux/reducers/page';
 import { resetToken } from '../../redux/reducers/auth';
 
-const mapDispatchToProps = { goto, resetToken };
+const mapDispatchToProps = { resetToken };
 const mapStateToProps = ({}) => ({}); 
 
 class Welcome extends Component {
@@ -43,7 +42,7 @@ class Welcome extends Component {
           <View style={styles.iconBox}>
             <Icon
               style={styles.icon}
-              ios="ios-happy-outline"
+              ios="ios-happy"
               android="md-happy"
             />
             <Text style={styles.welcome}>Welcome</Text>
@@ -60,7 +59,7 @@ class Welcome extends Component {
             <Button
               block
               style={styles.button}
-              onPress={() => this.props.goto("Settings")}
+              onPress={() => this.props.navigation.navigate("settings")}
             >
               <Text>Settings</Text>
             </Button>

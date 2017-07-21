@@ -18,9 +18,7 @@ import { View } from 'react-native';
 import styles from './styles';
 import appStyles  from '../app/styles';
 
-import { goto } from '../../redux/reducers/page';
-
-const mapDispatchToProps = { goto };
+const mapDispatchToProps = {};
 const mapStateToProps = ({}) => ({}); 
 
 class Settings extends Component {
@@ -51,19 +49,6 @@ class Settings extends Component {
   render() {
     return (
       <Container>
-        <Header>
-          <Left>
-            <Button
-              transparent
-              onPress={() => this.props.navigation.navigate("DrawerOpen")}>
-              <Icon name="menu" />
-            </Button>
-          </Left>
-          <Body>
-            <Title>Settings</Title>
-          </Body>
-          <Right />
-        </Header>
         <Content>
           <View style={styles.iconBox}>
             <Icon
@@ -77,7 +62,7 @@ class Settings extends Component {
             <Button
               block
               style={styles.button}
-              onPress={() => this.props.goto("Welcome")}
+              onPress={() => this.props.navigation.navigate("welcome")}
             >
               <Text>Welcome</Text>
             </Button>

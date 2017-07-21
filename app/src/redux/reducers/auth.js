@@ -1,6 +1,6 @@
 //import { Action } from './page';
 
-const SAVE = "SAVE";
+const SAVE = "AUTH_SAVE";
 
 const Action = {
   save: token => ({ type: SAVE, token })
@@ -22,7 +22,6 @@ export default (state = initialState, action) => {
 //use redux-thunk see https://github.com/gaearon/redux-thunk
 export const saveToken = (token) => (dispatch, getState) => {  
   dispatch(Action.save(token));
-  //dispatch(Action.goto("Welcome")); Not good to call action of other reducer
 }
 
 export const resetToken = () => dispatch => {
