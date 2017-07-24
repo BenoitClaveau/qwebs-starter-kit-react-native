@@ -6,7 +6,8 @@ import {
   Text,
   Image,
   TouchableHighlight,
-  TouchableOpacity
+  TouchableOpacity,
+  Button
 } from 'react-native';
 import {
   Icon,
@@ -164,63 +165,138 @@ class DrawerContent extends Component {
   }
 }
 
-const MainScreenNavigator = TabNavigator({
-  test: { screen: Test },
-  settings: { screen: Settings },
-});
+class ChatScreen extends Component {
+  render() {
+    const {state} = this.props.navigation;
+    return (
+      <View>
+        <Text>CHAT with: {this.props.navigation.state.params.user}</Text>
+        <Button
+          onPress={() => this.props.navigation.navigate('recent')}
+          title="recent"
+        />
+        <Button
+          onPress={() => this.props.navigation.navigate('all')}
+          title="all"
+        />
+      </View>
+    )
+  }
+}
 
-class NestedTab extends Component {
+class RecentChatsScreen extends Component {
   render() {
     return (
       <View>
-        <Text>COOOL</Text>
+        <Text>RECENT</Text>
+        <Button
+          onPress={() => this.props.navigation.navigate('chat', { user: 'Lucy' })}
+          title="chat"
+        />
+        <Button
+          onPress={() => this.props.navigation.navigate('all')}
+          title="all"
+        />
+      </View>
+    )
+  }
+}
+
+class AllContactsScreen extends Component {
+  render() {
+    return (
+      <View>
+        <Text>ALL</Text>
+        <Button
+          onPress={() => this.props.navigation.navigate('chat', { user: 'Lucy' })}
+          title="chat"
+        />
+        <Button
+          onPress={() => this.props.navigation.navigate('recent')}
+          title="recent"
+        />
+      </View>
+    )
+  }
+}
+
+const MainScreenNavigator = TabNavigator({
+  recent: { screen: RecentChatsScreen },
+  all: { screen: AllContactsScreen },
+});
+
+
+// const NavigatorWrappingScreen = ({ navigation }) => (
+//   <View>
+//     <Text>COOOL</Text>
+//     <MainScreenNavigator navigation={navigation}/>
+//   </View>
+// );
+
+// NavigatorWrappingScreen.router = MainScreenNavigator.router;
+
+
+const NavigatorWrappingScreen = class extends Component {
+  render() {
+    return (
+      <View style={{flex: 1}}>
+        <Text>-- START --</Text>
         <MainScreenNavigator navigation={this.props.navigation}/>
+        <Text>-- END --</Text>
       </View>
     );
   }
 }
+NavigatorWrappingScreen.router = MainScreenNavigator.router;
 
-NestedTab.router = Tab.router;
-
-//Main view
-const Main = DrawerNavigator({
-  welcome: {
-    screen: Welcome,
-  },
-  tab: {
-    screen: Tab
-  }
-}, {
-  contentComponent: DrawerContent,
-  contentOptions: {
-    activeTintColor: "#e91e63",
-    style: {
-      flex: 1,
-      paddingTop: 15,
-    }
-  }
+const SimpleApp = StackNavigator({
+  main: { screen: NavigatorWrappingScreen },
+  chat: { screen: ChatScreen },
 });
 
-const AppNavigator = StackNavigator({
-  main: {
-    screen: NestedTab,//Main,
-    path: "main",
-    navigationOptions: {
-      title: `Welcome 2`,
-    }
-  }
-}, {
-  headerMode: 'screen',
-  navigationOptions: ({navigation}) => ({
-    //see https://reactnavigation.org/docs/navigators/stack
-    //see https://github.com/react-community/react-navigation/blob/master/examples/NavigationPlayground/js/SimpleStack.js
-    headerLeft: <DrawerButton navigation={navigation} />,
-    headerStyle: { backgroundColor: "#333" },
-    headerTitleStyle: { color: "#FFF" }
-  }),
-});
 
-export default AppNavigator;
+
+
+
+// //Main view
+// const Main = DrawerNavigator({
+//   welcome: {
+//     screen: Welcome,
+//   },
+//   tab: {
+//     screen: Tab
+//   }
+// }, {
+//   contentComponent: DrawerContent,
+//   contentOptions: {
+//     activeTintColor: "#e91e63",
+//     style: {
+//       flex: 1,
+//       paddingTop: 15,
+//     }
+//   }
+// });
+
+// const AppNavigator = StackNavigator({
+//   main: {
+//     screen: SimpleApp,//Main,
+//     path: "main",
+//     navigationOptions: {
+//       title: `Welcome 2`,
+//     }
+//   }
+// }, {
+//   headerMode: 'screen',
+//   navigationOptions: ({navigation}) => ({
+//     //see https://reactnavigation.org/docs/navigators/stack
+//     //see https://github.com/react-community/react-navigation/blob/master/examples/NavigationPlayground/js/SimpleStack.js
+//     headerLeft: <DrawerButton navigation={navigation} />,
+//     headerStyle: { backgroundColor: "#333" },
+//     headerTitleStyle: { color: "#FFF" }
+//   }),
+// });
+
+export default SimpleApp;
 
 //http://docs.nativebase.io/docs/examples/navigation/StackNavigationExample.html
 //https://github.com/react-community/react-navigation/issues/131
@@ -236,3 +312,10 @@ export default AppNavigator;
 
 //Custom TabBar
 //https://github.com/react-community/react-navigation/issues/1059
+
+// import { NavigationActions } from 'react-navigation';
+// const mapDispatchToProps = dispatch => ({
+//   logout: () => dispatch({ type: 'Logout' }),
+//   loginScreen: () =>
+//     dispatch(NavigationActions.navigate({ routeName: 'Login' })),
+// });

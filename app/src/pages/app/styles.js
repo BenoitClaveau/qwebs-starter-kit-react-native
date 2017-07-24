@@ -29,4 +29,8 @@ export default {
         textAlign: 'left',
         color: "#fff"
     },
+    container: {
+        flex: 1,
+        backgroundColor: '#F5FCFF',
+    }
 };
