@@ -1,5 +1,5 @@
 import React, { Component} from 'react';
-import { StackNavigator, DrawerNavigator, DrawerItems, TabNavigator, TabBarTop } from 'react-navigation';
+import { StackNavigator, DrawerNavigator, DrawerItems, TabNavigator, TabBarTop, addNavigationHelpers, TabItem, createNavigationContainer, createNavigator, TabRouter } from 'react-navigation';
 import { 
   ScrollView,
   View,
@@ -21,102 +21,27 @@ import Test from '../test';
 
 const image = require("../../assets/images/logo-audi.png");
 
-// const AppNavigator = StackNavigator({
-//   Login: { screen: Login }, 
-//   Welcome: { screen: Welcome }
-// });
+let currentIndex;
 
-// const AppNavigator = DrawerNavigator({
-//   Welcome: {
-//     screen: Welcome,
-//   },
-//   Settings: {
-//     screen: Settings,
-//   },
-// }, {
-//   title: 'My Chats',
-//   drawerWidth: 300,
-//   drawerPosition: 'left',
-//   contentOptions: {
-//     activeTintColor: '#e91e63',
-//   },
-//   contentComponent: (props) => (
-//     <View style={styles.drawer}>
-//       <ScrollView>
-//         <View style={styles.drawerHeader}>
-//           <Image 
-//               style={styles.drawerHeaderImage}
-//               source={image}
-//           />
-//         </View>
-//         <DrawerItems
-//           {...props}
-//         />
-//       </ScrollView>
-//     </View>
-//   )
-// });
-
-const Tab = TabNavigator({
-  settings: {
-    screen: Settings,
-    path:"settings",
-    navigationOptions: {
-      tabBarLabel: 'My settings',
-    }
-  },
-  test: {
-    screen: Test,
-    path:"test",
-  },
-}, {
-  headerMode: 'screen',
-  tabBarOptions: {
-    activeTintColor: '#fff',
-    inactiveTintColor: '#bbb',
-    style: {
-      backgroundColor: "#666",
+const Tab = TabNavigator(
+  {
+    settings: {
+      screen: Settings,
     },
-    titleStyle: {
-      color: 'white',
-    }
+    test: {
+      screen: Test,
+    },
   },
-});
-
-// let currentIndex;
-
-// const Tab = TabNavigator(
-//   {
-//     settings: {
-//       screen: Settings,
-//     },
-//     test: {
-//       screen: Test,
-//     },
-//   },
-//   {
-//     tabBarComponent: ({ jumpToIndex, ...props }) => (
-//       <TabBarTop
-//         {...props}
-//         jumpToIndex={index => {
-//           if (currentIndex === index && index === 0) {
-//             let resetTabAction = NavigationActions.navigate({
-//               routeName: "settings",
-//               action: NavigationActions.reset({
-//                 index: 0,
-//                 actions: [NavigationActions.navigate({ routeName: "Main" })],
-//               }),
-//             });
-//             props.navigation.dispatch(resetTabAction);
-//           } else {
-//             currentIndex = index;
-//             jumpToIndex(index);
-//           }
-//         }}
-//       />
-//     ),
-//   }
-// );
+  {
+    tabBarComponent: ({ jumpToIndex, ...props }) => (
+      <ScrollView horizontal={true}>
+        <View style={{width: 150, height: 50, backgroundColor: 'powderblue'}} />
+        <View style={{width: 150, height: 50, backgroundColor: 'skyblue'}} />
+        <View style={{width: 150, height: 50, backgroundColor: 'steelblue'}} />
+      </ScrollView >
+    ),
+  }
+);
 
 
 var navitems =[
@@ -134,8 +59,6 @@ var navitems =[
     },
 ]
 
-//Custom Drawer
-//see https://gist.github.com/temitope/0ac2390e75c04d9ba4badfd9f920e321
 class DrawerContent extends Component { 
   constructor(props) {
     super(props)
@@ -165,157 +88,39 @@ class DrawerContent extends Component {
   }
 }
 
-class ChatScreen extends Component {
-  render() {
-    const {state} = this.props.navigation;
-    return (
-      <View>
-        <Text>CHAT with: {this.props.navigation.state.params.user}</Text>
-        <Button
-          onPress={() => this.props.navigation.navigate('recent')}
-          title="recent"
-        />
-        <Button
-          onPress={() => this.props.navigation.navigate('all')}
-          title="all"
-        />
-      </View>
-    )
+const Main = DrawerNavigator({
+  welcome: {
+    screen: Welcome,
+  },
+  tab: {
+    screen: Tab
   }
-}
-
-class RecentChatsScreen extends Component {
-  render() {
-    return (
-      <View>
-        <Text>RECENT</Text>
-        <Button
-          onPress={() => this.props.navigation.navigate('chat', { user: 'Lucy' })}
-          title="chat"
-        />
-        <Button
-          onPress={() => this.props.navigation.navigate('all')}
-          title="all"
-        />
-      </View>
-    )
+}, {
+  contentComponent: DrawerContent,  //Link to the drawer content view
+  contentOptions: {
+    activeTintColor: "#e91e63",
+    style: {
+      flex: 1,
+      paddingTop: 15,
+    }
   }
-}
-
-class AllContactsScreen extends Component {
-  render() {
-    return (
-      <View>
-        <Text>ALL</Text>
-        <Button
-          onPress={() => this.props.navigation.navigate('chat', { user: 'Lucy' })}
-          title="chat"
-        />
-        <Button
-          onPress={() => this.props.navigation.navigate('recent')}
-          title="recent"
-        />
-      </View>
-    )
-  }
-}
-
-const MainScreenNavigator = TabNavigator({
-  recent: { screen: RecentChatsScreen },
-  all: { screen: AllContactsScreen },
 });
 
-
-// const NavigatorWrappingScreen = ({ navigation }) => (
-//   <View>
-//     <Text>COOOL</Text>
-//     <MainScreenNavigator navigation={navigation}/>
-//   </View>
-// );
-
-// NavigatorWrappingScreen.router = MainScreenNavigator.router;
-
-
-const NavigatorWrappingScreen = class extends Component {
-  render() {
-    return (
-      <View style={{flex: 1}}>
-        <Text>-- START --</Text>
-        <MainScreenNavigator navigation={this.props.navigation}/>
-        <Text>-- END --</Text>
-      </View>
-    );
+const AppNavigator = StackNavigator({
+  main: {
+    screen: Main,
+    path: "main",
+    navigationOptions: {
+      title: `Welcome 2`,
+    }
   }
-}
-NavigatorWrappingScreen.router = MainScreenNavigator.router;
-
-const SimpleApp = StackNavigator({
-  main: { screen: NavigatorWrappingScreen },
-  chat: { screen: ChatScreen },
+}, {
+  headerMode: 'screen',
+  navigationOptions: ({navigation}) => ({
+    headerLeft: <DrawerButton navigation={navigation} />, //Add a button to open the drawer
+    headerStyle: { backgroundColor: "#333" },
+    headerTitleStyle: { color: "#FFF" }
+  }),
 });
 
-
-
-
-
-// //Main view
-// const Main = DrawerNavigator({
-//   welcome: {
-//     screen: Welcome,
-//   },
-//   tab: {
-//     screen: Tab
-//   }
-// }, {
-//   contentComponent: DrawerContent,
-//   contentOptions: {
-//     activeTintColor: "#e91e63",
-//     style: {
-//       flex: 1,
-//       paddingTop: 15,
-//     }
-//   }
-// });
-
-// const AppNavigator = StackNavigator({
-//   main: {
-//     screen: SimpleApp,//Main,
-//     path: "main",
-//     navigationOptions: {
-//       title: `Welcome 2`,
-//     }
-//   }
-// }, {
-//   headerMode: 'screen',
-//   navigationOptions: ({navigation}) => ({
-//     //see https://reactnavigation.org/docs/navigators/stack
-//     //see https://github.com/react-community/react-navigation/blob/master/examples/NavigationPlayground/js/SimpleStack.js
-//     headerLeft: <DrawerButton navigation={navigation} />,
-//     headerStyle: { backgroundColor: "#333" },
-//     headerTitleStyle: { color: "#FFF" }
-//   }),
-// });
-
-export default SimpleApp;
-
-//http://docs.nativebase.io/docs/examples/navigation/StackNavigationExample.html
-//https://github.com/react-community/react-navigation/issues/131
-
-//Custom drawer
-//https://github.com/react-community/react-navigation/blob/master/src/views/Drawer/DrawerView.js
-
-//Signin signup
-//https://medium.com/the-react-native-log/building-an-authentication-flow-with-react-navigation-fb5de2203b5c
-
-//Nested Navigator
-//https://github.com/react-community/react-navigation/blob/master/docs/guides/Guide-Nested.md
-
-//Custom TabBar
-//https://github.com/react-community/react-navigation/issues/1059
-
-// import { NavigationActions } from 'react-navigation';
-// const mapDispatchToProps = dispatch => ({
-//   logout: () => dispatch({ type: 'Logout' }),
-//   loginScreen: () =>
-//     dispatch(NavigationActions.navigate({ routeName: 'Login' })),
-// });
+export default AppNavigator;

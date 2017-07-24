@@ -1,7 +1,7 @@
 import React from 'react';
 import { BackHandler } from 'react-native';
 import { connect } from 'react-redux';
-import { addNavigationHelpers } from 'react-navigation';
+import { addNavigationHelpers, NavigationActions } from 'react-navigation';
 import PropTypes from 'prop-types';
 import AppNavigator from './AppNavigator';
 import Login from '../login';
@@ -46,12 +46,12 @@ class App extends React.Component {
   }
 
   renderScene() {
+    const navigation = addNavigationHelpers({
+      dispatch: this.props.dispatch,
+      state: this.props.nav,
+    });
     return (
-      <AppNavigator navigation={addNavigationHelpers({
-        dispatch: this.props.dispatch,
-        state: this.props.nav,
-      })}
-      />
+      <AppNavigator navigation={navigation} />
     );
   }
 }
