@@ -35,9 +35,18 @@ const Tab = TabNavigator(
   {
     tabBarComponent: ({ jumpToIndex, ...props }) => (
       <ScrollView horizontal={true}>
-        <View style={{width: 150, height: 50, backgroundColor: 'powderblue'}} />
-        <View style={{width: 150, height: 50, backgroundColor: 'skyblue'}} />
-        <View style={{width: 150, height: 50, backgroundColor: 'steelblue'}} />
+        <TouchableOpacity style={{width: 150, height: 74, backgroundColor: 'powderblue'}} onPress={() => props.navigation.navigate("test")}>
+          <Text>Val 1</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={{width: 150, height: 74, backgroundColor: 'skyblue'}} onPress={() => props.navigation.navigate("settings")}>
+          <Text>Val 2</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={{width: 150, height: 74, backgroundColor: 'steelblue'}} onPress={() => props.navigation.navigate("test")}>
+          <Text>Val 3</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={{width: 150, height: 74, backgroundColor: 'powderblue'}} onPress={() => props.navigation.navigate("settings")}>
+          <Text>Val 4</Text>
+        </TouchableOpacity>
       </ScrollView >
     ),
   }
