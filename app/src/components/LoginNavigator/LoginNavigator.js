@@ -5,18 +5,18 @@ import { Icon } from 'native-base';
 import styles from './styles';
 
 //pages
-//import Login from '../../pages/login';
-
-class RecentChatsScreen extends React.Component {
-  render() {
-    return <Text>List of recent chats</Text>
-  }
-}
+import Login from '../../pages/login';
+import SignUp from '../../pages/login';
 
 const Navigator = StackNavigator({
   login: {
-    screen: RecentChatsScreen
+    screen: Login
+  },
+  signup: {
+    screen: SignUp
   }
+}, {
+  headerMode: 'none'
 });
 
 export default Navigator;

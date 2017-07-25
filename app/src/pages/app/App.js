@@ -1,33 +1,15 @@
-import React from 'react';
-import { BackHandler } from 'react-native';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { addNavigationHelpers, NavigationActions } from 'react-navigation';
-import PropTypes from 'prop-types';
 import AppNavigator from '../../components/AppNavigator';
-import Login from '../login';
+import LoginNavigator from '../../components/LoginNavigator';
 
-const mapStateToProps = ({ nav, auth }) => ({ nav, hasToken: auth.token != null });
+const mapStateToProps = ({ nav, navLogin, auth }) => ({ nav, navLogin, hasToken: auth.token != null });
 
-class App extends React.Component {
+class App extends Component {
 
   constructor(props) {
     super(props);
-  }
-
-  componentDidMount() {
-    BackHandler.addEventListener('hardwareBackPress', function() {
-      let {dispatch, rootNavigation} = this.props;
-      // Close the drawer if necessary.
-      if (rootNavigation.routes[rootNavigation.index].key === 'DrawerOpen') {
-          dispatch({type: 'Navigate', routeName: 'DrawerClose'});
-          return true;
-      }
-    });
-  }
-
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.hasToken)
-      console.log("Authenticated");
   }
 
   render() {
@@ -36,8 +18,12 @@ class App extends React.Component {
   }
 
   renderLogin() {
+    const navigation = addNavigationHelpers({
+      dispatch: this.props.dispatch,
+      state: this.props.navLogin,
+    });
     return (
-      <Login />
+      <LoginNavigator navigation={navigation} />
     );
   }
 
