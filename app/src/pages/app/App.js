@@ -3,14 +3,10 @@ import { BackHandler } from 'react-native';
 import { connect } from 'react-redux';
 import { addNavigationHelpers, NavigationActions } from 'react-navigation';
 import PropTypes from 'prop-types';
-import AppNavigator from './AppNavigator';
+import AppNavigator from '../../components/AppNavigator';
 import Login from '../login';
 
 const mapStateToProps = ({ nav, auth }) => ({ nav, hasToken: auth.token != null });
-
-// const mapStateToProps = (state) => ({
-//   nav: state.nav
-// });
 
 class App extends React.Component {
 

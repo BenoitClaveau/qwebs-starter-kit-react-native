@@ -1,7 +1,7 @@
 //see https://reactnavigation.org/docs/guides/redux
 
 import { NavigationActions } from 'react-navigation';
-import AppNavigator from '../../pages/app/AppNavigator';
+import AppNavigator from '../../components/AppNavigator';
 
 //WARNING initialState with all routes (must be the main view). Call reset to reload all routes
 const initialState=AppNavigator.router.getStateForAction(NavigationActions.reset({
