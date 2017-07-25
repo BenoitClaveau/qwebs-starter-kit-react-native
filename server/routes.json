@@ -6,6 +6,7 @@
     ],
     "locators": [
         { "get": "/user/:id", "service": "$user", "method": "getById" },
+        { "post": "/user/connect", "service": "$user", "method": "connect" },
         { "get": "/users", "service": "$user", "method": "list" },
         { "post": "/oauth/token", "service": "$oauth2", "method": "token" },
         { "get": "/secret", "service": "$oauth2", "method": "secret" },

@@ -34,6 +34,14 @@ class UserRoute {
         let user = this.users[id];
         return response.send({ request: request, content: user });
     };
+
+    connect(request, response) {
+        console.log(request.body);
+        let content = {
+            token: "1234"
+        }
+        return response.send({ request: request, content: content });
+    }
 };
 
 exports = module.exports = UserRoute;

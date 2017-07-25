@@ -1,4 +1,4 @@
-//import { Action } from './page';
+//https://github.com/ryanmcdermott/react-native-login/blob/master/ReactNativeLogin/App/components/App.js
 
 const SAVE = "AUTH_SAVE";
 

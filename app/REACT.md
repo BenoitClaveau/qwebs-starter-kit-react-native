@@ -115,3 +115,27 @@ npm install --save react-navigation@latest
 npm install --save react-native-drawer-layout-polyfill
 npm install --save react-native-tab-view
 ```
+
+## native-base
+
+http://nativebase.io/docs/v0.5.13/components#form
+
+## Async / Await
+
+To avoid SynatxError you need to install http://babeljs.io/docs/plugins/preset-stage-3/
+
+```shell
+npm install --save-dev babel-preset-stage-3
+```
+
+```.bablrc 
+{
+  "presets": ["stage-3"]
+}
+```
+
+## Use an api
+
+10.0.2.2 is an alias to loaclhost for the device in AVD
+
+replace http://localhost:3000 to http://10.0.2.2:3000

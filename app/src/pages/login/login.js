@@ -1,64 +1,78 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { WebView, View, Text, Button } from 'react-native';
+import { Field, reduxForm } from 'redux-form'
+import { Container, Content, Form, Item, Label, Input, Button, Text } from 'native-base';
+import { View, TouchableOpacity } from 'react-native';
 import styles from './styles';
+import appStyles  from '../app/styles';
 
-import { saveToken, resetToken } from '../../redux/reducers/auth';
+import { authenticate } from '../../redux/reducers/user';
 
-const mapDispatchToProps = { saveToken, resetToken }; //saveToken dispatcher is now accessible through this.props.saveToken
-const mapStateToProps = ({ auth }) => ({ hasToken: auth.token != null }); 
+const mapDispatchToProps = { authenticate };
+const mapStateToProps = ({ user }) => ({ user }); 
 
-class Login extends Component {
+class Page extends Component {
 
-  //react-navigation options
-  static navigationOptions = {
-    title: 'Login',
-  };
-
-  constructor(props) {
-    super(props);
-    this.ready = false;
-  }
-
-  render() {
-    if (!this.props.hasToken) return this.renderLogin();
-    return this.renderScene();
-  }
-
-  renderLogin(){
-    return (
-        <WebView
-          source={{uri: 'http://10.0.0.23:3000/signin?client_id=4&redirect_uri=redirect_uri_value'}}
-          javaScriptEnabled={true}
-          onNavigationStateChange={this.onNavigationStateChange.bind(this)}
-          onLoad={this.onLoad.bind(this)}
-        />
-    );
-  }
-
-  onNavigationStateChange(navState) {
-    if (!this.ready) return; //bug fix to avoid multiple call
-
-    let m = /code=([\w-_+]*)/g.exec(navState.url);
-    if (m) {
-      let token = m[1];
-      this.props.saveToken(token); //call saveToken dispatcher in auth.js
+    constructor(props) {
+        super(props);
     }
-    this.ready = false;
-  }
 
-  onLoad(event) {
-    this.ready = true;
-  }
+    //componentwillreceiveprops
+    componentDidMount() {
+        this.props.initialize({
+            login: this.props.user.login,
+            password: "****"
+        });
+    }
 
-  renderScene(){
-    return (
-      <View>
-        <Text>You are already identify!</Text>
-        <Button title="Reset token" onPress={() => this.props.resetToken()} />
-      </View>
-    );
+    submit(values) {
+        this.props.authenticate(values);
+    }
+
+    render() {
+        const props = this.props;
+        return (
+            <Container>
+                <Content>
+                    <CustomForm onSubmit={this.submit.bind(this)} {...props}/>
+                </Content>
+            </Container>
+        );
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Login);
+const renderInput = ({ input: { onChange, ...restInput }}) => {
+    return <Input onChangeText={onChange} {...restInput} />
+}
+
+const CustomForm = (props) => {
+    const { handleSubmit, pristine, reset, submitting, user, onSubmit } = props;
+    return (
+      <Form>
+        <Item fixedLabel>
+            <Label>Username</Label>
+            <Field name="login" component={renderInput} />
+        </Item>
+        <Item fixedLabel last>
+            <Label>Password</Label>
+            <Field name="password" component={renderInput} />
+        </Item>
+{user.error &&
+        <Text style={{color: "#ff0066" }}>{user.error.toString()}</Text>
+}
+        <Button onPress={handleSubmit(onSubmit)}>
+            <Text>Connexion</Text>
+        </Button>
+        <Button onPress={reset}>
+            <Text>Cancel</Text>
+        </Button>
+    </Form>
+  )
+}
+
+Page = reduxForm({
+    form: 'login',
+    enableReinitialize: true
+})(Page)
+
+export default connect(mapStateToProps, mapDispatchToProps)(Page);
