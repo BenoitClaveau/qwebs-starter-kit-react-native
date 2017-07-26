@@ -11,9 +11,7 @@ import { View } from 'react-native';
 import styles from './styles';
 import appStyles from '../app/styles';
 
-import { resetToken } from '../../redux/reducers/auth';
-
-const mapDispatchToProps = { resetToken };
+const mapDispatchToProps = {};
 const mapStateToProps = ({}) => ({}); 
 
 class Welcome extends Component {
@@ -48,14 +46,6 @@ class Welcome extends Component {
             <Text style={styles.welcome}>Welcome</Text>
           </View>
           <View style={styles.buttonContainer}>
-            <Button
-              block
-              style={styles.button}
-              onPress={() => this.props.resetToken()}
-            >
-              <Text>Log out</Text>
-            </Button>
-            <Text style={styles.or}>OR</Text>
             <Button
               block
               style={styles.button}

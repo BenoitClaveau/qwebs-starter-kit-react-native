@@ -20,7 +20,7 @@ import NavigationDrawer from '../../components/NavigationDrawer';
 
 import * as Actions from '../../redux/reducers/route';
 
-const mapStateToProps = ({ navigation, auth }) => ({ navigation, auth }); 
+const mapStateToProps = ({ navigation, user }) => ({ navigation, user }); 
 
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators(Actions, dispatch);
@@ -46,7 +46,7 @@ class Routes extends Component {
   }
 
   render() {
-    //if (!this.props.auth.token) return this.renderLogin();
+    //if (!this.props.user.token) return this.renderLogin();
     return this.renderScene();
   }
 

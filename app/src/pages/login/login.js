@@ -11,7 +11,7 @@ import { authenticate } from '../../redux/reducers/user';
 const mapDispatchToProps = { authenticate };
 const mapStateToProps = ({ user }) => ({ user }); 
 
-class Page extends Component {
+export class Page extends Component {
 
     constructor(props) {
         super(props);
@@ -34,7 +34,10 @@ class Page extends Component {
         return (
             <Container>
                 <Content>
-                    <CustomForm onSubmit={this.submit.bind(this)} {...props}/>
+                    {/* <CustomForm onSubmit={this.submit.bind(this)} {...props}/> */}
+                    <Button onPress={this.submit.bind(this)}>
+                        <Text>Connexion</Text>
+                    </Button>
                 </Content>
             </Container>
         );

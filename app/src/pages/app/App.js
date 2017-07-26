@@ -4,7 +4,7 @@ import { addNavigationHelpers, NavigationActions } from 'react-navigation';
 import AppNavigator from '../../components/AppNavigator';
 import LoginNavigator from '../../components/LoginNavigator';
 
-const mapStateToProps = ({ nav, navLogin, auth }) => ({ nav, navLogin, hasToken: auth.token != null });
+const mapStateToProps = ({ nav, navLogin, user }) => ({ nav, navLogin, authenticated: user.token != null });
 
 class App extends Component {
 
@@ -13,7 +13,7 @@ class App extends Component {
   }
 
   render() {
-    if (!this.props.hasToken) return this.renderLogin();
+    if (!this.props.authenticated) return this.renderLogin();
     return this.renderScene();
   }
 

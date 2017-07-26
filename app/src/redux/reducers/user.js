@@ -1,43 +1,30 @@
-import api from "../../api";
-
-const AUTHENTICATE_START = "USER_AUTHENTICATE_START";
-const AUTHENTICATE_END = "USER_AUTHENTICATE_END";
-const AUTHENTICATE_ERROR = "USER_AUTHENTICATE_ERROR";
+export const Action = {
+  authenticate: () => ({
+    type: "API_USER_AUTHENTICATE",
+    payload: {
+      request:{
+        url:'user/connect',
+        method: 'POST'
+      }
+    }
+  }),
+}
 
 const initialState = {
     token: null,
     error: null,
-    login: "my login",
+    login: null,
     password: null
 };
 
 export default (state = initialState, action) => {
   switch(action.type) {
-    case AUTHENTICATE_END: return { ...state, token: action.data.token }; 
-    case AUTHENTICATE_ERROR: return { ...state, error: action.error }; 
-    default: return {...state, error: null };
+    case "API_USER_AUTHENTICATE_SUCCESS": return { ...state, token: action.payload.data.token }; 
+    case "API_USER_AUTHENTICATE_FAIL": return { ...state, error: action.error }; 
+    default: return {...state, error: null, token: null };
   }
 }
 
-// const LOAD = 'redux-form-examples/account/LOAD'
-
-// const reducer = (state = {}, action) => {
-//   switch (action.type) {
-//     case LOAD:
-//       return {
-//         data: action.data
-//       }
-//     default:
-//       return state
-//   }
-// }
-
-export const authenticate = (form) => async (dispatch, getState) => {
-  dispatch({ type: AUTHENTICATE_START });
-  try {
-    const { data } = await api.user.post("connect", form);
-    dispatch({ type: AUTHENTICATE_END, data });
-  } catch (error) {
-    dispatch({ type: AUTHENTICATE_ERROR, error });
-  }
+export const authenticate = (form) => (dispatch, getState) => {
+  return dispatch(Action.authenticate());
 }

@@ -11,9 +11,7 @@ import { View } from 'react-native';
 import styles from './styles';
 import appStyles from '../app/styles';
 
-import { resetToken } from '../../redux/reducers/auth';
-
-const mapDispatchToProps = { resetToken };
+const mapDispatchToProps = { };
 const mapStateToProps = ({}) => ({}); 
 
 class Test extends Component {

@@ -3,10 +3,10 @@ import { connect } from 'react-redux';
 import { WebView, View, Text, Button } from 'react-native';
 import styles from './styles';
 
-import { saveToken, resetToken } from '../../redux/reducers/auth';
+import { saveToken, resetToken } from '../../redux/reducers/user';
 
 const mapDispatchToProps = { saveToken, resetToken }; //saveToken dispatcher is now accessible through this.props.saveToken
-const mapStateToProps = ({ auth }) => ({ hasToken: auth.token != null }); 
+const mapStateToProps = ({ user }) => ({ authenticated: user.token != null }); 
 
 class Login extends Component {
 
@@ -21,7 +21,7 @@ class Login extends Component {
   }
 
   render() {
-    if (!this.props.hasToken) return this.renderLogin();
+    if (!this.props.authenticated) return this.renderLogin();
     return this.renderScene();
   }
 
@@ -42,7 +42,7 @@ class Login extends Component {
     let m = /code=([\w-_+]*)/g.exec(navState.url);
     if (m) {
       let token = m[1];
-      this.props.saveToken(token); //call saveToken dispatcher in auth.js
+      this.props.saveToken(token); //call saveToken dispatcher in user.js
     }
     this.ready = false;
   }
