@@ -1,5 +1,6 @@
 {
   "presets": ["react-native", "stage-3"],
   "plugins": [],
-  "sourceMaps": true
+  "sourceMaps": true,
+  "retainLines": true
 }

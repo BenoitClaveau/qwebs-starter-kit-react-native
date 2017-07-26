@@ -112,6 +112,7 @@ componentWillReceiveProps(nextProps) {
 
 ```shell
 npm install --save react-navigation@latest
+npm install --save react-native-drawer-layout
 npm install --save react-native-drawer-layout-polyfill
 npm install --save react-native-tab-view
 ```

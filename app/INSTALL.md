@@ -141,3 +141,19 @@ react-native run-ios
 
 After the emulator is running and the app on it, press the Menu button and then select "Debug JS Remotely" or "Debug in Chrome" (It depends the emulator using). You can see the next image as reference: emulator with steps image
 A new Chrome Tab will appears. You must press Ctrl + ⇧J to show the Developer tools and start tracking the debug steps. See this image as reference
+
+## Run via Expo
+
+
+### Install
+
+```shell
+npm install -g exp
+npm install --save expo
+```
+
+# Start
+
+```shell
+exp start
+```
