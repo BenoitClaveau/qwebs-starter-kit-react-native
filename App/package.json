@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "axios": "latest",
+    "babel-preset-react-native": "^2.1.0",
     "babel-preset-stage-3": "^6.24.1",
     "form-data": "latest",
     "moment": "latest",
@@ -19,7 +20,6 @@
     "react-native-drawer-layout": "latest",
     "react-native-drawer-layout-polyfill": "latest",
     "react-native-tab-view": "latest",
-    "react-native-vector-icons": "latest",
     "react-navigation": "^1.0.0-beta.12",
     "react-redux": "latest",
     "redux": "latest",
@@ -32,7 +32,6 @@
   "devDependencies": {
     "axios-mock-adapter": "^1.9.0",
     "babel-jest": "^20.0.3",
-    "babel-preset-react-native": "latest",
     "enzyme": "^2.9.1",
     "jest": "latest",
     "jest-cli": "^20.0.4",

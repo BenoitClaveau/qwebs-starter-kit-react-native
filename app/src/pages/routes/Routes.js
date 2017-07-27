@@ -9,7 +9,6 @@ import {
   ToolbarAndroid,
   ViewPagerAndroid
 } from 'react-native';
-import Icon from 'react-native-vector-icons/MaterialIcons'; 
 import styles from './styles';
 import { bindActionCreators } from 'redux';
 

@@ -38,7 +38,8 @@ class UserRoute {
     connect(request, response) {
         console.log(request.body);
         let content = {
-            token: "1234"
+            token: "1234",
+            login: request.body.login
         }
         return response.send({ request: request, content: content });
     }

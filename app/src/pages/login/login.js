@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form'
-import { Container, Content, Form, Item, Label, Input, Button, Text } from 'native-base';
-import { View, TouchableOpacity } from 'react-native';
+import { Container, Header, Title, Content, List, ListItem, InputGroup, Icon, Input, Text, Button } from 'native-base';
+import { View, Image } from 'react-native';
 import styles from './styles';
-import appStyles  from '../app/styles';
 
 import { authenticate } from '../../redux/reducers/user';
 
@@ -15,67 +14,71 @@ export class Page extends Component {
 
     constructor(props) {
         super(props);
+        this.state = { 
+            login: '',
+            password: ''
+        }
     }
 
-    //componentwillreceiveprops
-    componentDidMount() {
-        this.props.initialize({
-            login: this.props.user.login,
-            password: "****"
-        });
+    componentWillReceiveProps(nextProps) {
+        this.setState(nextProps);
     }
 
     submit(values) {
-        this.props.authenticate(values);
+        this.props.authenticate(this.state);
     }
 
     render() {
-        const props = this.props;
         return (
-            <Container>
-                <Content>
-                    {/* <CustomForm onSubmit={this.submit.bind(this)} {...props}/> */}
-                    <Button onPress={this.submit.bind(this)}>
+            <View style={{
+                flex: 1,
+                backgroundColor: "#333"
+            }}>
+                <View style={{
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    flex: 1,
+                    minHeight: 200
+                }}>
+                    <Image source={require('../../assets/images/logo-audi.png')} />
+                </View>
+
+                <View style={{
+                    marginBottom: 64
+                }}>
+                    <List style={{
+                        marginBottom: 32
+                    }}>
+                        <ListItem>
+                            <InputGroup>
+                                <Icon name="person" style={{ color: '#fff', paddingRight: 16 }} />
+                                <Input
+                                    style={{ color: '#fff'}}
+                                    onChangeText={(text) => this.setState({login: text})}
+                                    value={this.state.login}
+                                    placeholder={"Email Address"} 
+                                />
+                            </InputGroup>
+                        </ListItem>
+                        <ListItem>
+                            <InputGroup>
+                                <Icon name="unlock" style={{ color: '#fff', paddingRight: 16 }} />
+                                <Input
+                                    onChangeText={(text) => this.setState({password: text})}
+                                    value={this.state.password}
+                                    secureTextEntry={true}
+                                    placeholder={"Password"} 
+                                />
+                            </InputGroup>
+                        </ListItem>
+                    </List>
+                    <Button full onPress={this.submit.bind(this)} >
                         <Text>Connexion</Text>
                     </Button>
-                </Content>
-            </Container>
+                </View>
+            </View>
         );
-  }
+    }
 }
-
-const renderInput = ({ input: { onChange, ...restInput }}) => {
-    return <Input onChangeText={onChange} {...restInput} />
-}
-
-const CustomForm = (props) => {
-    const { handleSubmit, pristine, reset, submitting, user, onSubmit } = props;
-    return (
-      <Form>
-        <Item fixedLabel>
-            <Label>Username</Label>
-            <Field name="login" component={renderInput} />
-        </Item>
-        <Item fixedLabel last>
-            <Label>Password</Label>
-            <Field name="password" component={renderInput} />
-        </Item>
-{user.error &&
-        <Text style={{color: "#ff0066" }}>{user.error.toString()}</Text>
-}
-        <Button onPress={handleSubmit(onSubmit)}>
-            <Text>Connexion</Text>
-        </Button>
-        <Button onPress={reset}>
-            <Text>Cancel</Text>
-        </Button>
-    </Form>
-  )
-}
-
-Page = reduxForm({
-    form: 'login',
-    enableReinitialize: true
-})(Page)
 
 export default connect(mapStateToProps, mapDispatchToProps)(Page);
