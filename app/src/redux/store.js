@@ -8,6 +8,11 @@ import axios from 'axios';
 const config = require("../config.json");
 
 //export axiosClients for unit testing => axios could be mocked 
+//use multiClientMiddleware instead of axiosMiddleware for muliple clients
+export const axiosDefault = axios.create({
+  responseType: 'json'
+});
+
 
 export const axiosApi = axios.create({
   baseURL: config.api.url,
@@ -31,8 +36,9 @@ const store = createStore(
       createLogger({collapsed: true}),
       thunkMiddleware,
       multiClientMiddleware({
-        default: axiosApi,
-        bucket: axiosBucket,
+        default: { client: axiosDefault },
+        api: { client: axiosApi },
+        bucket: { client: axiosBucket },
       })
     )
   )

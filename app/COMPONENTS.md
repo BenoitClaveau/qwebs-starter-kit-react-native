@@ -10,6 +10,10 @@ cd App
 npm install react-navigation --save
 ```
 
+#### react-navigation + custom drawer
+
+(https://github.com/GeekyAnts/native-base-react-navigation-stack-navigator)[https://github.com/GeekyAnts/native-base-react-navigation-stack-navigator]
+
 ### Icons
 
 Open a CMD console as Administrator

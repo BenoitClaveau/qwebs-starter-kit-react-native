@@ -4,79 +4,50 @@ import {
   Button,
   Text,
   Container,
-  Card,
-  CardItem,
-  Body,
   Content,
-  Header,
-  Title,
-  Left,
   Icon,
-  Right
+  Drawer 
 } from 'native-base';
-import { View, TouchableOpacity } from 'react-native';
+import { View, Animated } from 'react-native';
 import styles from './styles';
 import appStyles  from '../app/styles';
 
-const mapDispatchToProps = {};
-const mapStateToProps = ({}) => ({}); 
+import SideBar  from './SideBar';
+import SideMenu from 'react-native-side-menu';
+import { toogleContextDrawer } from "../../redux/reducers/nav";
+
+const mapDispatchToProps = () => ({ toogleContextDrawer })
+const mapStateToProps = ({nav}) => ({contextDrawerOpen: nav.contextDrawerOpen}); 
 
 class Settings extends Component {
-
-  static navigationOptions = {
-    drawerLabel: 'Settings2',
-    drawerIcon: ({ tintColor, focused }) => (
-      <View style={{flex:1, alignItems: "flex-start" }}>
-        <Icon
-          style={{ color: tintColor }}
-          ios="ios-bicycle"
-          android="md-bicycle"
-        />
-      </View>
-    ),
-    // drawerLabel: ({ tintColor, focused }) => (
-    //   <View style={{flex: 1, flexDirection: "column", justifyContent: 'space-between', height: 80}}>
-    //     <TouchableOpacity 
-    //       onPress={() => this.props.navigation.navigate("settings")}
-    //     >
-    //       <Text>Settings</Text>
-    //     </TouchableOpacity>
-    //     <TouchableOpacity 
-    //       onPress={() => this.props.navigation.navigate("test")}
-    //     >
-    //       <Text>Test</Text>
-    //     </TouchableOpacity>
-    //   </View>
-    // )
-  };
 
   constructor(props) {
     super(props);
   }
 
   render() {
-    return (
-      <Container>
-        <Content>
-          <View style={styles.iconBox}>
-            <Icon
-              style={styles.icon}
-              ios="ios-happy-outline"
-              android="md-happy"
-            />
-            <Text style={styles.welcome}>Settings</Text>
-          </View>
-          <View style={styles.buttonContainer}>
-            <Button
-              block
-              style={styles.button}
-              onPress={() => this.props.navigation.navigate("welcome")}
-            >
-              <Text>Welcome</Text>
-            </Button>
-          </View>
-        </Content>
-      </Container>
+    return (      
+        <Container>
+          <Content>
+            <View style={styles.iconBox}>
+              <Icon
+                style={styles.icon}
+                ios="ios-happy-outline"
+                android="md-happy"
+              />
+              <Text style={styles.welcome}>Settings</Text>
+            </View>
+            <View style={styles.buttonContainer}>
+              <Button
+                block
+                style={styles.button}
+                onPress={() => this.props.navigation.navigate("welcome")}
+              >
+                <Text>Welcome</Text>
+              </Button>
+            </View>
+          </Content>
+        </Container>
     )
   }
 }

@@ -4,16 +4,16 @@ import { Icon } from 'native-base';
 import { connect } from 'react-redux';
 import styles from './styles';
 
-const mapStateToProps = ({ nav }) => ({ drawerOpen: nav.drawerOpen }); 
+const mapStateToProps = ({ nav }) => ({ contextDrawerOpen: nav.contextDrawerOpen}); 
 
-class DrawerButton extends Component {
+class ContextDrawerButton extends Component {
 
   constructor(props) {
     super(props)
   }
-  
+
   render() {
-    if(this.props.drawerOpen) return this.renderOpen();
+    if(this.props.contextDrawerOpen) return this.renderOpen();
     return this.renderClose();
   }
   
@@ -21,9 +21,9 @@ class DrawerButton extends Component {
     return (
       <View style={styles.container}>
         <TouchableOpacity 
-          onPress={() => this.props.navigation.navigate("DrawerClose")}
+          onPress={() => this.props.navigation.navigate("ContextDrawerClose")}
         >
-          <Icon name="close" style={styles.icon}/>
+          <Icon name="ios-funnel" style={styles.icon}/>
         </TouchableOpacity>
       </View>
     )
@@ -33,13 +33,13 @@ class DrawerButton extends Component {
     return (
       <View style={styles.container}>
         <TouchableOpacity 
-          onPress={() => this.props.navigation.navigate("DrawerOpen")}
+          onPress={() => this.props.navigation.navigate("ContextDrawerOpen")}
         >
-          <Icon name="menu" style={styles.icon}/>
+          <Icon name="ios-funnel-outline" style={styles.icon}/>
         </TouchableOpacity>
       </View>
     )
   }
 };
 
-export default connect(mapStateToProps)(DrawerButton);
+export default connect(mapStateToProps)(ContextDrawerButton);

@@ -16,29 +16,18 @@ const mapStateToProps = ({}) => ({});
 
 class Test extends Component {
 
-  static navigationOptions = {
-    title: 'Test',
-
-    drawerLabel: 'Test',
-    drawerIcon: ({ tintColor }) => (
-      <Icon
-        style={{color: tintColor}}
-        ios="ios-happy-outline"
-        android="md-hammer"
-      />
-    ),
-  };
-
   constructor(props) {
     super(props);
   }
 
   render() {
     return (
-      <Container style={styles.container}>
+      <Container>
         <Content>
-          <View style={styles.iconBox}>
+          <View>
             <Text>Home</Text>
+            <Text>1</Text>
+            <Text>2</Text>
           </View>
         </Content>
       </Container>

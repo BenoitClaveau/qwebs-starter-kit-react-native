@@ -12,22 +12,9 @@ import styles from './styles';
 import appStyles from '../app/styles';
 
 const mapDispatchToProps = {};
-const mapStateToProps = ({}) => ({}); 
+const mapStateToProps = ({user}) => ({user}); 
 
 class Welcome extends Component {
-
-  // static navigationOptions = {
-  //   title: 'Welcome',
-
-  //   drawerLabel: 'Welcome',
-  //   drawerIcon: ({ tintColor }) => (
-  //     <Icon
-  //       style={{color: tintColor}}
-  //       ios="ios-happy-outline"
-  //       android="md-hammer"
-  //     />
-  //   ),
-  // };
 
   constructor(props) {
     super(props);
@@ -43,7 +30,7 @@ class Welcome extends Component {
               ios="ios-happy"
               android="md-happy"
             />
-            <Text style={styles.welcome}>Welcome</Text>
+            <Text style={styles.welcome}>Welcome {this.props.user.login}</Text>
           </View>
           <View style={styles.buttonContainer}>
             <Button
