@@ -8,7 +8,7 @@ import appStyles  from '../app/styles';
 
 import { authenticate } from '../../redux/reducers/user';
 
-const mapDispatchToProps = { authenticate };
+const mapDispatchToProps = () => ({ authenticate });
 const mapStateToProps = ({ user }) => ({ user }); 
 
 export class Page extends Component {
@@ -17,7 +17,7 @@ export class Page extends Component {
         super(props);
     }
 
-    //componentwillreceiveprops
+    //componentWillReceiveProps
     componentDidMount() {
         this.props.initialize({
             login: this.props.user.login,

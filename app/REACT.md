@@ -50,13 +50,13 @@ import {
   setRouterPage
 } from '../../redux/reducers/route';
 
-//link dispatcher manually
-const mapDispatchToProps = { 
+//link dispatcher manually (with redux-thunk)
+const mapDispatchToProps = () => ({ 
   toggleDrawer,
   setDrawerToClose,
   setDrawerToOpen,
   setRouterPage
-};
+});
 ```
 
 ```.js

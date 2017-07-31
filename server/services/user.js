@@ -17,9 +17,10 @@ class UserRoute {
     list(request, response) {
         const stream = Readable({objectMode: true}); 
 		stream._read = () => {};                     
-		
+        
+        let skip = request.query.skip || 0;
         setTimeout(() => {
-            for(let i = 0; i < 50; i++) {
+            for(let i = skip; i < (skip + 50); i++) {
                 stream.push(this.users[i])
             }
             stream.emit("end"); //equals as stream.push(null);    

@@ -31,7 +31,7 @@ export default (state = initialState, action) => {
   switch(action.type) {
     case `${AUTH}`: return { ...state, token: null, error: null };  //reset data
     case `${AUTH}_SUCCESS`: return { ...state, ...action.payload.data }; 
-    case `${AUTH}__FAIL`: return { ...state, error: action.error }; 
+    case `${AUTH}__FAIL`: return { ...state, error: action.error }; //may be use an error reducer
     default: return {...state };
   }
 }

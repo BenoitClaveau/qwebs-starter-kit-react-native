@@ -11,7 +11,7 @@ import { View } from 'react-native';
 import styles from './styles';
 import appStyles from '../app/styles';
 
-const mapDispatchToProps = {};
+const mapDispatchToProps = () => ({});
 const mapStateToProps = ({user}) => ({user}); 
 
 class Welcome extends Component {

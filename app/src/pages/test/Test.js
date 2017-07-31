@@ -1,18 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import {
-  Container,
-  Content,
-  Icon,
-  Text,
-  Button,
-} from 'native-base';
-import { View } from 'react-native';
+import { List, FlatList, View, Text } from 'react-native';
 import styles from './styles';
-import appStyles from '../app/styles';
 
-const mapDispatchToProps = { };
-const mapStateToProps = ({}) => ({}); 
+import { list } from '../../redux/reducers/users';
+
+const mapDispatchToProps = () => ({ list });
+const mapStateToProps = ({ users }) => ({ users }); 
 
 class Test extends Component {
 
@@ -20,17 +14,34 @@ class Test extends Component {
     super(props);
   }
 
+  refresh() {
+    this.props.list();
+  }
+
+  loadMore() {
+    this.props.list(this.props.users.length);
+  }
+
+  renderItem(item) {
+    return (
+      <View style={{height: 60, backgroundColor: "#ff0066", padding: 16 }}>
+        <Text>{item.login}</Text>
+      </View>
+    );
+  }
+
   render() {
     return (
-      <Container>
-        <Content>
-          <View>
-            <Text>Home</Text>
-            <Text>1</Text>
-            <Text>2</Text>
-          </View>
-        </Content>
-      </Container>
+      <View>
+        <List>
+          <FlatList
+            data={this.props.users}
+            renderItem={this.renderItem.bind(this)}
+            onRefresh={this.refresh.bind(this)}
+            onEndReached={this.loadMore.bind(this)}
+          />
+        </List>
+      </View>
     )
   }
 }
