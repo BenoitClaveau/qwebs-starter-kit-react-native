@@ -5,7 +5,7 @@ import thunkMiddleware from 'redux-thunk'
 import rootReducer from './reducers'
 import axiosMiddleware, { multiClientMiddleware } from 'redux-axios-middleware';
 import axios from 'axios';    
-const config = require("../config.json");
+const config = require("../config/app.json");
 
 //export axiosClients for unit testing => axios could be mocked 
 //use multiClientMiddleware instead of axiosMiddleware for muliple clients

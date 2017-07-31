@@ -1,5 +1,4 @@
 /*!
- * quactus
  * Copyright(c) 2017 Benoît Claveau <benoit.claveau@gmail.com>
  * MIT Licensed
  */

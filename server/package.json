@@ -4,6 +4,7 @@
   "description": "Starter kit to create an API for react native application with Qwebs server.",
   "main": "server.js",
   "dependencies": {
+    "exponent-server-sdk": "^2.3.1",
     "qwebs": "latest",
     "qwebs-http": "latest",
     "qwebs-oauth2": "latest",

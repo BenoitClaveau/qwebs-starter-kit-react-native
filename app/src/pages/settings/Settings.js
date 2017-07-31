@@ -12,12 +12,8 @@ import { View, Animated } from 'react-native';
 import styles from './styles';
 import appStyles  from '../app/styles';
 
-import SideBar  from './SideBar';
-import SideMenu from 'react-native-side-menu';
-import { toogleContextDrawer } from "../../redux/reducers/nav";
-
-const mapDispatchToProps = () => ({ toogleContextDrawer })
-const mapStateToProps = ({nav}) => ({contextDrawerOpen: nav.contextDrawerOpen}); 
+const mapDispatchToProps = () => ({ })
+const mapStateToProps = ({}) => ({}); 
 
 class Settings extends Component {
 
