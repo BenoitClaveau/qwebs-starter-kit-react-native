@@ -11,7 +11,7 @@ import { toogleContextDrawer } from '../../redux/reducers/nav';
 import Settings  from '../../pages/settings';
 import Test  from '../../pages/test';
 
-const mapDispatchToProps = () => ({ toogleContextDrawer })
+const mapDispatchToProps = ({}) => ({ toogleContextDrawer }); //WARNING use lambda synatx maybe because redux-thunk is not binded 
 const mapStateToProps = ({ nav }) => ({ contextDrawerOpen: nav.contextDrawerOpen }); 
 
 const Tabs = TabRouter(
@@ -44,8 +44,7 @@ class CustomTabView extends Component {
   }
 
   render() {
-    let navigation = this.props.navigation;
-    let router = this.props.router;
+    const { navigation, router, contextDrawerOpen, toogleContextDrawer }  = this.props;
     const { routes, index } = navigation.state;
     
     const ActiveScreen = router.getComponentForState(navigation.state);
@@ -55,8 +54,8 @@ class CustomTabView extends Component {
          ref={(ref) => { this.drawer = ref; }}
          menu={ <ContextDrawerContent /> }
          menuPosition="right"
-         isOpen={this.props.contextDrawerOpen}
-         onChange={(open) => this.props.toogleContextDrawer(open)}
+         isOpen={contextDrawerOpen}
+         onChange={(open) => toogleContextDrawer(open)}
       >
         <View style={{ flex: 1, backgroundColor: "#fff" }}>
           <Text>Settings</Text>
@@ -73,8 +72,8 @@ class CustomTabView extends Component {
           </Picker>
         
           <ScrollView horizontal={true} style={{ flexGrow: 0 }}>
-  {routes.map(route => (
-            <TouchableOpacity style={{width: 150, height: 74}} onPress={() => this.props.navigation.navigate(route.routeName)}>
+  {routes.map((route, index) => (
+            <TouchableOpacity key={index} onPress={() => navigation.navigate(route.routeName)} style={{width: 150, height: 74}}>
               <View style={{backgroundColor: 'powderblue', marginTop: 4, marginBottom: 8, marginLeft: 4, marginRight: 4, flex: 1, borderWidth: 1, borderColor: "#333", justifyContent: "center", alignItems: "center" }}>
                 <Text>{route.routeName}</Text>
               </View>

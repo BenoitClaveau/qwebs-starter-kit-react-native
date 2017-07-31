@@ -13,11 +13,11 @@ class ContextDrawerContent extends Component {
   render() {
     return (
         <Container style={{flex:1, height: window.height, width: window.width }}>
-            <Content>
+          <Content>
             <View>
                 <Text>SideBar</Text>
             </View>
-            </Content>
+          </Content>
         </Container>
     )
   }

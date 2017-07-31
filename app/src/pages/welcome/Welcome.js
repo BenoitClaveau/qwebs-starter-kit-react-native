@@ -1,17 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import {
-  Container,
-  Content,
-  Icon,
-  Text,
-  Button,
-} from 'native-base';
 import { View } from 'react-native';
+import { Container, Content, Icon, Text, Button} from 'native-base';
 import styles from './styles';
-import appStyles from '../app/styles';
 
-const mapDispatchToProps = () => ({});
+const mapDispatchToProps = {};
 const mapStateToProps = ({user}) => ({user}); 
 
 class Welcome extends Component {

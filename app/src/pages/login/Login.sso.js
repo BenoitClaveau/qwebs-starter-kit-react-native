@@ -5,7 +5,7 @@ import styles from './styles';
 
 import { saveToken, resetToken } from '../../redux/reducers/user';
 
-const mapDispatchToProps = () => ({ saveToken, resetToken }); //saveToken dispatcher is now accessible through this.props.saveToken
+const mapDispatchToProps = { saveToken, resetToken }; //saveToken dispatcher is now accessible through this.props.saveToken
 const mapStateToProps = ({ user }) => ({ authenticated: user.token != null }); 
 
 class Login extends Component {

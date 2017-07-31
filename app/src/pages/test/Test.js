@@ -1,28 +1,32 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import { List, FlatList, View, Text } from 'react-native';
 import styles from './styles';
 
 import { list } from '../../redux/reducers/users';
 
-const mapDispatchToProps = () => ({ list });
+const mapDispatchToProps = { list };
 const mapStateToProps = ({ users }) => ({ users }); 
 
-class Test extends Component {
+class Comp extends PureComponent {
 
   constructor(props) {
     super(props);
   }
 
+  componentDidMount() {
+    this.refresh();
+  }
+
   refresh() {
-    this.props.list();
+    this.props.list({ reload: true});
   }
 
   loadMore() {
-    this.props.list(this.props.users.length);
+    this.props.list();
   }
 
-  renderItem(item) {
+  renderItem({item, index}) {
     return (
       <View style={{height: 60, backgroundColor: "#ff0066", padding: 16 }}>
         <Text>{item.login}</Text>
@@ -31,19 +35,19 @@ class Test extends Component {
   }
 
   render() {
+    const { users } = this.props;
     return (
-      <View>
-        <List>
-          <FlatList
-            data={this.props.users}
-            renderItem={this.renderItem.bind(this)}
-            onRefresh={this.refresh.bind(this)}
-            onEndReached={this.loadMore.bind(this)}
-          />
-        </List>
-      </View>
+      <FlatList
+          keyExtractor={item => item.login}
+          data={users}
+          renderItem={this.renderItem.bind(this)}
+          onRefresh={this.refresh.bind(this)}
+          refreshing={false}
+          onEndReachedThreshold={1.5}
+          onEndReached={this.loadMore.bind(this)}
+      />
     )
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Test);
+export default connect(mapStateToProps, mapDispatchToProps)(Comp);

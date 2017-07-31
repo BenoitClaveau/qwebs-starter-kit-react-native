@@ -7,7 +7,7 @@ import styles from './styles';
 
 import { authenticate } from '../../redux/reducers/user';
 
-const mapDispatchToProps = () => ({ authenticate });
+const mapDispatchToProps = { authenticate };
 const mapStateToProps = ({ user }) => ({ user }); 
 
 export class Page extends Component {

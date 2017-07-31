@@ -18,14 +18,15 @@ class UserRoute {
         const stream = Readable({objectMode: true}); 
 		stream._read = () => {};                     
         
-        let skip = request.query.skip || 0;
+        let skip = parseInt(request.query.skip);
         setTimeout(() => {
-            for(let i = skip; i < (skip + 50); i++) {
-                stream.push(this.users[i])
+            for(let i = skip; i < (skip + 8); i++) {
+                console.log({ login: `user${i+1}@exemple.com` })
+                stream.push({ login: `user${i+1}@exemple.com` })
             }
             stream.emit("end"); //equals as stream.push(null);    
         }, 100);
-        
+        console.log("----------------")
         return response.send({ request: request, stream: stream });
     };
 

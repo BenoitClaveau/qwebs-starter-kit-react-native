@@ -12,7 +12,7 @@ import { View, Animated } from 'react-native';
 import styles from './styles';
 import appStyles  from '../app/styles';
 
-const mapDispatchToProps = () => ({ })
+const mapDispatchToProps = {};
 const mapStateToProps = ({}) => ({}); 
 
 class Settings extends Component {

@@ -33,7 +33,7 @@ const store = createStore(
   rootReducer,
   composeWithDevTools(
     applyMiddleware(
-      createLogger({collapsed: true}),
+      //createLogger({collapsed: true}), //WARNING do not user createLogger with flatlist => lock
       thunkMiddleware,
       multiClientMiddleware({
         default: { client: axiosDefault },
