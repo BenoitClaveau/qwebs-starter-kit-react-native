@@ -78,7 +78,8 @@ react-native start --port 8081
             "outDir": "${workspaceRoot}/.vscode/.react"
         }
     ]
-}```
+}
+```
 1. Press the Menu button of the emulator (Ctrl^M) and then select "Debug JS Remotely" or "Debug in Chrome"
 1. Start the application
 
