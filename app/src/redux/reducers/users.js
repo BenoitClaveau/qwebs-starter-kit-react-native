@@ -20,21 +20,29 @@ export const Action = {
 
 /* Reducer ---------------------------*/
 
-const initialState = [];
+const initialState = {
+  data: [],
+  refreshing: false
+};
 
 export default (state = initialState, action) => {
   switch(action.type) {
+    case `${LIST}`: 
+      if (action.meta.previousAction.skip == 0) return { ...state, refreshing: true };
+      return { ...state };
+    case `${LIST}_FAIL`: return { ...state, refreshing: false };
     case `${LIST}_SUCCESS`: 
-      if (action.meta.previousAction.skip == 0) return [...action.payload.data];
-      return [...state, ...action.payload.data];
-      // return action.payload.data.reduce((previous, current) => {
-      //   if(!previous.some(s => s.login == current.login)) 
-      //     previous.push(current);
-      //   return previous;
-      // }, state);  //reset state if skip == 0;
-    default: return [...state];
+      if (action.meta.previousAction.skip == 0) return { data: [...action.payload.data], refreshing: false};
+      return { data: [...state.data, ...action.payload.data], refreshing: false};
+    default: return {...state};
   }
 }
+
+// return action.payload.data.reduce((previous, current) => {
+//   if(!previous.some(s => s.login == current.login)) 
+//     previous.push(current);
+//   return previous;
+// }, state);  //reset state if skip == 0;
 
 /* Dispatchers ---------------------------*/
 

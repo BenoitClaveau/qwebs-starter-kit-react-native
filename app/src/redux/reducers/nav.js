@@ -25,19 +25,21 @@ const initialState = AppNavigator.router.getStateForAction(NavigationActions.res
 }))
 
 //override navigation initialState
-initialState = {...initialState, drawerOpen: false, contextDrawerOpen: false };
+initialState = {...initialState, drawerOpen: false, contextDrawerOpen: false, contextDrawerButtonVisible: true };
 
 export default (state = initialState, action) => {
+  if (action.type != "Navigation/NAVIGATE") return {...state};
+
   let nextState = AppNavigator.router.getStateForAction(action, state) || state;
   switch(action.routeName) {
     case "DrawerOpen": return {...nextState, drawerOpen: true };
     case "DrawerClose": return {...nextState, drawerOpen: false };
     case "ContextDrawerOpen": return {...nextState, contextDrawerOpen: true };
     case "ContextDrawerClose": return {...nextState, contextDrawerOpen: false };
-    default: return {...nextState, drawerOpen: false, contextDrawerOpen: false};
+    case "settings": return {...nextState, drawerOpen: false, contextDrawerOpen: false, contextDrawerButtonVisible: false};
+    default: return {...nextState, drawerOpen: false, contextDrawerOpen: false, contextDrawerButtonVisible: true};
   }
 };
-
 
 /* Dispatchers ---------------------------*/
 

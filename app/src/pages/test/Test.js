@@ -6,9 +6,9 @@ import styles from './styles';
 import { list } from '../../redux/reducers/users';
 
 const mapDispatchToProps = { list };
-const mapStateToProps = ({ users }) => ({ users }); 
+const mapStateToProps = ({ users }) => ({ data: users.data, refreshing: users.refreshing }); 
 
-class Comp extends PureComponent {
+class Test extends PureComponent {
 
   constructor(props) {
     super(props);
@@ -35,19 +35,19 @@ class Comp extends PureComponent {
   }
 
   render() {
-    const { users } = this.props;
+    const { data, refreshing } = this.props;
     return (
       <FlatList
           keyExtractor={item => item.login}
-          data={users}
+          data={data}
           renderItem={this.renderItem.bind(this)}
           onRefresh={this.refresh.bind(this)}
-          refreshing={false}
-          onEndReachedThreshold={1.5}
+          refreshing={refreshing}
+          onEndReachedThreshold={1}
           onEndReached={this.loadMore.bind(this)}
       />
     )
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Comp);
+export default connect(mapStateToProps, mapDispatchToProps)(Test);

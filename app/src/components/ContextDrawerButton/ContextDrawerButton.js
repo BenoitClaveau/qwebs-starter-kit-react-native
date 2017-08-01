@@ -4,7 +4,7 @@ import { Icon } from 'native-base';
 import { connect } from 'react-redux';
 import styles from './styles';
 
-const mapStateToProps = ({ nav }) => ({ contextDrawerOpen: nav.contextDrawerOpen}); 
+const mapStateToProps = ({ nav }) => ({ contextDrawerOpen: nav.contextDrawerOpen, contextDrawerButtonVisible: nav.contextDrawerButtonVisible}); 
 
 class ContextDrawerButton extends Component {
 
@@ -13,7 +13,8 @@ class ContextDrawerButton extends Component {
   }
 
   render() {
-    if(this.props.contextDrawerOpen) return this.renderOpen();
+    if (!this.props.contextDrawerButtonVisible) return <View />
+    if (this.props.contextDrawerOpen) return this.renderOpen();
     return this.renderClose();
   }
   
