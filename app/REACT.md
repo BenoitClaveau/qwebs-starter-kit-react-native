@@ -50,6 +50,14 @@ import {
   setRouterPage
 } from '../../redux/reducers/route';
 
+//link dispatcher manually (without redux-thunk)
+const mapDispatchToProps = { 
+  toggleDrawer,
+  setDrawerToClose,
+  setDrawerToOpen,
+  setRouterPage
+};
+
 //link dispatcher manually (with redux-thunk)
 const mapDispatchToProps = () => ({ 
   toggleDrawer,
@@ -120,6 +128,10 @@ npm install --save react-native-tab-view
 ## native-base
 
 http://nativebase.io/docs/v0.5.13/components#form
+
+### List with infinte scroll
+
+(https://github.com/GeekyAnts/nativebase-tutorial/blob/master/app.js)[https://github.com/GeekyAnts/nativebase-tutorial/blob/master/app.js]
 
 ## Async / Await
 

@@ -144,15 +144,42 @@ A new Chrome Tab will appears. You must press Ctrl + ⇧J to show the Developer 
 
 ## Run via Expo
 
+### Prerequisites
+
+Downgrade npm to v4
+
+```shell
+npm install -g npm@4
+```
+
 ### Install
 
 ```shell
 npm install -g exp
 npm install --save expo
+npm install jest-expo --save-dev
 ```
 
 # Start
 
 ```shell
 exp start
+```
+
+# Clear cache
+
+```shell
+exp start --clear
+```
+
+## ERROR: undefined is not an object (evaluating 'regeneratorRuntime.mark')
+
+Downgarde babel-preset-react-native from 2.1.0 to 2.0.0
+
+```shell
+del ./node_modules
+npm cache clean --force
+npm i babel-preset-react-native@2.0.0 -D -S
+npm install
+exp start --clear
 ```
