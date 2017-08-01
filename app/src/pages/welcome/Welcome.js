@@ -7,7 +7,7 @@ import styles from './styles';
 const mapDispatchToProps = {};
 const mapStateToProps = ({user}) => ({user}); 
 
-class Welcome extends Component {
+class Page extends Component {
 
   constructor(props) {
     super(props);
@@ -40,4 +40,4 @@ class Welcome extends Component {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Welcome);
+export default connect(mapStateToProps, mapDispatchToProps)(Page);

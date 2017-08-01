@@ -8,7 +8,7 @@ import { list } from '../../redux/reducers/users';
 const mapDispatchToProps = { list };
 const mapStateToProps = ({ users }) => ({ data: users.data, refreshing: users.refreshing }); 
 
-class Test extends PureComponent {
+class Page extends PureComponent {
 
   constructor(props) {
     super(props);
@@ -50,4 +50,4 @@ class Test extends PureComponent {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Test);
+export default connect(mapStateToProps, mapDispatchToProps)(Page);

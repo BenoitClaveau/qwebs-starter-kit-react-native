@@ -15,7 +15,7 @@ import appStyles  from '../app/styles';
 const mapDispatchToProps = {};
 const mapStateToProps = ({}) => ({}); 
 
-class Settings extends Component {
+class Page extends Component {
 
   constructor(props) {
     super(props);
@@ -48,4 +48,4 @@ class Settings extends Component {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Settings);
+export default connect(mapStateToProps, mapDispatchToProps)(Page);
