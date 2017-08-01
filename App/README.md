@@ -5,6 +5,7 @@ React Native
 [Components](./COMPONENTS.md)  
 [React](./REACT.md)
 [Unit tests](./TESTS.md)
+[npm](./NPM.md)
 
 ## Debug
 

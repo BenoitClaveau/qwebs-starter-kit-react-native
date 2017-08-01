@@ -37,13 +37,13 @@ Add ANDROID_HOME C:\Users\BenoitClaveau\AppData\Local\Android\sdk to user system
 1. Create a virtual device like Nexus 5.
 1. Start the virtual device.
 1. Close Android Studio.
-
 1. Start a virtual device (Nexus 5)
+
 ```shell
 npm run nexus
 ```
-
 1. Start the packager
+
 ```shell
 react-native start
 or
@@ -51,8 +51,8 @@ react-native start --port 8081
 ```
 
 >After the emulator is running and the app on it, press the Menu button (Ctrl M) and then select "Debug JS Remotely" or "Debug in Chrome"
+1. Attach VSCode to packager and start the debugger
 
-1. Attach VSCode to packager adn start the debugger
 ```launch.json
 {
     "version": "0.2.0",
@@ -69,6 +69,7 @@ react-native start --port 8081
 }```
 
 1. Start the appliaction
+
 ```shell
 react-native run-android
 ```
@@ -76,6 +77,7 @@ react-native run-android
 #### Debug in manually in chrome
 
 1. Open packager
+
 ```shell
 open http://localhost:8081
 open http://localhost:8081/debugger-ui
@@ -125,14 +127,13 @@ cd App
 react-native run-ios
 ```
 
-### Debug with Visual Studio Code
+### Debug with Visual Studio
 
 1. Add the PATH environment variable:
 
 > C:\Android\sdk\platform-tools (for adb)
 > C:\Android\sdk\emulator (for emulator)
 > C:\Android\sdk\tools\bin (for advmanager)
-
 2. Install [Visual Source Code](https://code.visualstudio.com) and the [React Native Tools extension](https://github.com/Microsoft/vscode-react-native).
 3. cd App.
 4. Open a new Visual Source Code.
