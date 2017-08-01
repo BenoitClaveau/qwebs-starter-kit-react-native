@@ -144,7 +144,6 @@ A new Chrome Tab will appears. You must press Ctrl + ⇧J to show the Developer 
 
 ## Run via Expo
 
-
 ### Install
 
 ```shell
