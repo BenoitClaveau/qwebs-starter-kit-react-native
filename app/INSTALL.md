@@ -1,16 +1,12 @@
-# React Native
-
-Application
-
 ## React Native installation
 
 [https://facebook.github.io/react-native/docs/getting-started.html](https://facebook.github.io/react-native/docs/getting-started.html)
 
-1. NodeJS
-2. Python 2
-3. JDK 8
+1. [NodeJS](https://nodejs.org/en/download/)
+2. [Python 2](https://www.python.org/downloads/)
+3. [JDK 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
 
-Add path of npm module (C:\Users\your user name\AppData\Roaming\npm) to user system variables.
+Add path of npm module C:\Users\your user name\AppData\Roaming\npm to user system variables.
 
 ```shell
 npm install -g react-native-cli
@@ -22,9 +18,11 @@ Add ANDROID_HOME C:\Users\BenoitClaveau\AppData\Local\Android\sdk to user system
 
 ## Run an Android app
 
-### Start a virtual device
+### Using Android Studio
 
-#### Using Android Studio
+#### Installation
+
+##### Emulator
 
 1. Start Android Studio.
 1. Go to Tools > Android > SDK Manager.
@@ -37,6 +35,22 @@ Add ANDROID_HOME C:\Users\BenoitClaveau\AppData\Local\Android\sdk to user system
 1. Create a virtual device like Nexus 5.
 1. Start the virtual device.
 1. Close Android Studio.
+
+##### Visual Studio Code
+
+1. Add the PATH environment variable:
+> C:\Android\sdk\platform-tools (for adb)
+> C:\Android\sdk\emulator (for emulator)
+> C:\Android\sdk\tools\bin (for advmanager)
+1. Install [Visual Source Code](https://code.visualstudio.com) and the [React Native Tools extension](https://github.com/Microsoft/vscode-react-native).
+1. cd App.
+1. Open a new Visual Source Code.
+1. Create a [.babelrc file](https://github.com/Microsoft/vscode-react-native)
+1. Setup a React Native: Attach to packager
+1. Press the Menu button of the emulator (Ctrl^M) and then select "Debug JS Remotely" or "Debug in Chrome"
+
+#### Debug
+
 1. Start a virtual device (Nexus 5)
 
 ```shell
@@ -49,8 +63,6 @@ react-native start
 or
 react-native start --port 8081
 ```
-
->After the emulator is running and the app on it, press the Menu button (Ctrl M) and then select "Debug JS Remotely" or "Debug in Chrome"
 1. Attach VSCode to packager and start the debugger
 
 ```launch.json
@@ -67,14 +79,14 @@ react-native start --port 8081
         }
     ]
 }```
-
-1. Start the appliaction
+1. Press the Menu button of the emulator (Ctrl^M) and then select "Debug JS Remotely" or "Debug in Chrome"
+1. Start the application
 
 ```shell
 react-native run-android
 ```
 
-#### Debug in manually in chrome
+### Debug in manually in chrome
 
 1. Open packager
 
@@ -83,7 +95,7 @@ open http://localhost:8081
 open http://localhost:8081/debugger-ui
 ```
 
-#### Command line
+### Commands line
 
 List all virtual devices
 
@@ -97,7 +109,7 @@ Start a virtual device
 C:\Android\sdk\emulator\emulator.exe -avd Nexus_5_API_25
 ```
 
-#### Create a npm script to open device emulator
+### Create a npm script to open device emulator
 
 Add a npm script in package.json
 
@@ -113,35 +125,12 @@ Start a virtual device
 npm run nexus
 ```
 
-### Android
-
-```shell
-cd App
-react-native run-android
-```
-
-### IOS
+## Run an iOS app
 
 ```shell
 cd App
 react-native run-ios
 ```
-
-### Debug with Visual Studio
-
-1. Add the PATH environment variable:
-
-> C:\Android\sdk\platform-tools (for adb)
-> C:\Android\sdk\emulator (for emulator)
-> C:\Android\sdk\tools\bin (for advmanager)
-2. Install [Visual Source Code](https://code.visualstudio.com) and the [React Native Tools extension](https://github.com/Microsoft/vscode-react-native).
-3. cd App.
-4. Open a new Visual Source Code.
-5. Create a [.babelrc file](https://github.com/Microsoft/vscode-react-native)
-6. Setup a React Native: Attach to packager
-
-After the emulator is running and the app on it, press the Menu button and then select "Debug JS Remotely" or "Debug in Chrome" (It depends the emulator using). You can see the next image as reference: emulator with steps image
-A new Chrome Tab will appears. You must press Ctrl + ⇧J to show the Developer tools and start tracking the debug steps. See this image as reference
 
 ## Run via Expo
 
@@ -161,19 +150,21 @@ npm install --save expo
 npm install jest-expo --save-dev
 ```
 
-# Start
+WARNING: Start exp in a cmd console not directly in Visual Studio Code otherwise you'll not be able to get the qrcode.
+
+### Start
 
 ```shell
 exp start
 ```
 
-# Clear cache
+#### Clear cache
 
 ```shell
 exp start --clear
 ```
 
-## ERROR: undefined is not an object (evaluating 'regeneratorRuntime.mark')
+### ERROR: undefined is not an object (evaluating 'regeneratorRuntime.mark')
 
 Downgarde babel-preset-react-native from 2.1.0 to 2.0.0
 
