@@ -3,11 +3,11 @@ import { Provider } from 'react-redux';
 import renderer from 'react-test-renderer';
 import mockStore from 'redux-mock-store';
 import MockAdapter from 'axios-mock-adapter';
-import Login, { Page } from '../src/pages/login';
+//import Login, { Page } from '../src/pages/login';
 import { authenticate, Action } from '../src/redux/reducers/user';
 import store, { axiosClient } from '../src/redux/store';
-import {shallow } from 'enzyme';
-import { Button } from "native-base";
+//import { shallow } from 'enzyme';
+//import { Button } from "native-base";
 
 const mock = new MockAdapter(axiosClient); //mock aciosClient
 
