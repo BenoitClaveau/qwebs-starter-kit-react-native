@@ -1,11 +1,11 @@
 React Native
 ============
 
-* [Installation](./INSTALL.md)  
-* [Components](./COMPONENTS.md)  
-* [React](./REACT.md)
-* [Unit tests](./TESTS.md)
-* [npm](./NPM.md)
+* [Installation](./docs/INSTALL.md)  
+* [Components](./docs/COMPONENTS.md)  
+* [React](./docs/REACT.md)
+* [Unit tests](./docs/TESTS.md)
+* [npm](./docs/NPM.md)
 
 ## Debug
 
