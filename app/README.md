@@ -12,16 +12,16 @@ React Native
 1. npm install -g create-react-native-app
 1. create-react-native-app <application name> //WARNING application name couldn't be changed.
 
-## Eject project to debug via Android Studio
-
-1. Create an expo application: create-react-native-app <application name>
-1. npm run eject
-
 ## Start via Expo
 
 1. npm install -g exp
 1. exp start (--clear ro reset cache)
 1. scan barcode
+
+## Or eject project to debug via Android Studio
+
+1. Create an expo application: create-react-native-app <application name>
+1. npm run eject
 
 ## Debug via Android Studio
 
