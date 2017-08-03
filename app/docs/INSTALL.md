@@ -6,7 +6,10 @@
 2. [Python 2](https://www.python.org/downloads/)
 3. [JDK 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
 
-Add path of npm module C:\Users\your user name\AppData\Roaming\npm to user system variables.
+Add to PATH 
+```shell
+C:\Users\your user name\AppData\Roaming\npm
+```
 
 ```shell
 npm install -g react-native-cli
@@ -14,7 +17,17 @@ npm install -g react-native-cli
 
 [Download](https://developer.android.com/studio/index.html) and Install Android Studio
 
-Add ANDROID_HOME C:\Users\BenoitClaveau\AppData\Local\Android\sdk to user system variables.
+Add to ANDROID_HOME
+```shell
+C:\Users\BenoitClaveau\AppData\Local\Android\sdk
+```
+
+Add to PATH
+```shell
+C:\Android\sdk\tools\bin;
+C:\Android\sdk\platform-tools;
+C:\Android\sdk\emulator
+```
 
 ## Run an Android app
 
