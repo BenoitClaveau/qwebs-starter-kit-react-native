@@ -154,6 +154,8 @@ Downgrade npm to v4
 
 ```shell
 npm install -g npm@4
+download genymotion
+WARNING reinstall virtualbox after
 ```
 
 ### Install
