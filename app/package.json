@@ -3,9 +3,6 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "start": "react-native-scripts start",
-    "android": "react-native-scripts android",
-    "ios": "react-native-scripts ios",
     "test": "node node_modules/jest/bin/jest.js --watch",
     "nexus": "emulator.exe -avd Nexus_5X"
   },
@@ -18,7 +15,7 @@
     "expo": "^19.0.0",
     "form-data": "latest",
     "moment": "2.18.1",
-    "native-base": "2.3.0",
+    "native-base": "2.3.1",
     "react": "^16.0.0-alpha.12",
     "react-native": "^0.46.1",
     "react-native-drawer": "2.3.0",
