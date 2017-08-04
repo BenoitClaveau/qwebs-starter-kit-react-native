@@ -1,3 +1,5 @@
 {
-    "hello": "hello"
+    "hello": "hello",
+    "Password is not defined.": "Password is not defined.",
+    "User not found.": "User not found."
 }

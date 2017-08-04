@@ -20,15 +20,17 @@ export class Page extends Component {
         }
     }
 
-    componentWillReceiveProps(nextProps) {
-        this.setState(nextProps);
-    }
+    // componentWillReceiveProps(nextProps) {
+    //     this.setState(nextProps);
+    // }
 
     submit(values) {
         this.props.authenticate(this.state);
     }
 
     render() {
+        let { error } = this.props.user;
+
         return (
             <View style={{
                 flex: 1,
@@ -43,12 +45,18 @@ export class Page extends Component {
                     <Image source={require('../../assets/images/logo-audi.png')} />
                 </View>
 
-                <View style={{
-                    marginBottom: 64
-                }}>
-                    <List style={{
-                        marginBottom: 32
-                    }}>
+                <View style={{ marginBottom: 64 }}>
+                    <List style={{ marginBottom: 32 }}>
+{error &&
+                        <ListItem style={{borderColor: "transparent", marginBottom: 16 }}>
+                            <InputGroup >
+                                <Icon name="alert" style={{ color: '#d33', paddingRight: 16 }} />
+                                <Text style={{ color: '#fff' }}>
+                                    {error}
+                                </Text>
+                            </InputGroup>
+                        </ListItem>
+}
                         <ListItem>
                             <InputGroup>
                                 <Icon name="person" style={{ color: '#fff', paddingRight: 16 }} />

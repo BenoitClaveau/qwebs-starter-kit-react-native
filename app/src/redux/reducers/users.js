@@ -28,7 +28,7 @@ const initialState = {
 export default (state = initialState, action) => {
   switch(action.type) {
     case `${LIST}`: 
-      if (action.meta.previousAction.skip == 0) return { ...state, refreshing: true };
+      if (action.skip == 0) return { ...state, refreshing: true };
       return { ...state };
     case `${LIST}_FAIL`: return { ...state, refreshing: false };
     case `${LIST}_SUCCESS`: 

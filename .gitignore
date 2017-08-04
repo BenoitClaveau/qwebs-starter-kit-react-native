@@ -1,1 +1,4 @@
 /app/.vscode/.react
+/app/android/build
+/app/android/app/build
+/app/android/.gradle

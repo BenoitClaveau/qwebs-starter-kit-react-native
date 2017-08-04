@@ -1,3 +1,5 @@
 {
-    "hello": "bonjour"
+    "hello": "bonjour",
+    "Password is not defined.": "Veuillez ajouter votre mot de passe.",
+    "User not found.": "L'utilisateur est inconnu."
 }
